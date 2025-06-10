@@ -403,8 +403,23 @@
             e.preventDefault();
             this.stopNote(key);
           });
-          
+
           key.addEventListener('mouseleave', (e) => {
+            this.stopNote(key);
+          });
+
+           key.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.handleKeyPress(key);
+          });
+          
+          key.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.stopNote(key);
+          });
+          
+          key.addEventListener('touchcancel', (e) => {
+            e.preventDefault();
             this.stopNote(key);
           });
         });
@@ -542,6 +557,20 @@
       generatePattern() {
         const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4'];
         this.pattern = songs[this.songIndex];
+        /* this.pattern = [
+        {note: 'C4', duration: 100},
+        {note: 'D4', duration: 100},
+        {note: 'E4', duration: 100},
+        {note: 'F4', duration: 100},
+        {note: 'G4', duration: 100},
+        {note: 'A4', duration: 100},
+        {note: 'B4', duration: 100},
+        {note: 'C#4', duration: 100},
+        {note: 'D#4', duration: 100},
+        {note: 'F#4', duration: 100},
+        {note: 'G#4', duration: 100},
+        {note: 'A#4', duration: 100},
+      ] */
       }
     
       async startCaptcha() {
@@ -606,7 +635,6 @@
       checkUserInput() {
         const lastInput = this.userInput[this.userInput.length - 1];
         const expectedNote = this.pattern[this.userInput.length - 1].note; // Access note property
-        
         if (lastInput !== expectedNote) {
           this.clearInputTimer(); // Clear timer on wrong input
           this.gameState = 'failed';
@@ -621,7 +649,7 @@
           this.clearInputTimer(); // Clear timer on success
           this.gameState = 'success';
           this.updateUI();
-          this.captchaSuccess();
+          setTimeout(() => this.captchaSuccess(), 200)
         } else {
           this.updateUI();
           this.startInputTimer(); // Start timer for next key press
@@ -639,7 +667,6 @@
       }
       
       captchaSuccess() {
-        console.log(window.captchaSuccess)
         if (window.captchaSuccess) {
           window.captchaSuccess();
         }
@@ -708,6 +735,11 @@
         oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
         
         const now = this.audioContext.currentTime;
+        const sustainTime = isTouchDevice() ? 0.5 : 0.1; // Longer sustain on mobile
+
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.2, now + sustainTime);
         gainNode.gain.setValueAtTime(0, now);
         gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
         gainNode.gain.exponentialRampToValueAtTime(0.2, now + 0.1);
