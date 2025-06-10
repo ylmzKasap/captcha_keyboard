@@ -31,7 +31,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding-top: 10px;
     }
     
     .keyboard-container {
@@ -231,9 +231,9 @@
       
       .black-key:nth-of-type(8) { left: 30px; }
       .black-key:nth-of-type(9) { left: 70px; }
-      .black-key:nth-of-type(10) { left: 150px; }
-      .black-key:nth-of-type(11) { left: 190px; }
-      .black-key:nth-of-type(12) { left: 230px; }
+      .black-key:nth-of-type(10) { left: 160px; }
+      .black-key:nth-of-type(11) { left: 200px; }
+      .black-key:nth-of-type(12) { left: 240px; }
     }
 
     @media (hover: none) and (pointer: coarse) {
@@ -299,7 +299,7 @@
           </button>
         </div>
         <div id="progress" class="progress"></div>      
-        <div id="timer-container" class="timer-container" style="display: none;">
+        <div id="timer-container" class="timer-container" style="opacity: 0;">
           <div class="timer-bar">
             <div id="timer-fill" class="timer-fill"></div>
           </div>
@@ -494,12 +494,12 @@
       
       showTimer() {
         const timerContainer = document.getElementById('timer-container');
-        timerContainer.style.display = 'block';
+        timerContainer.style.opacity = 100;
       }
       
       hideTimer() {
         const timerContainer = document.getElementById('timer-container');
-        timerContainer.style.display = 'none';
+        timerContainer.style.opacity = 0;
       }
       
       updateVisualTimer(timeLeft) {
@@ -552,6 +552,15 @@
         }
         // Reset visual timer to full
         this.updateVisualTimer(0);
+      }
+
+      clearAllNotes() {
+        this.activeOscillators.forEach((audioNodes, note) => {
+          const keyElement = document.querySelector(`[data-note="${note}"]`);
+          if (keyElement) {
+            this.stopNote(keyElement);
+          }
+        });
       }
 
       generatePattern() {
@@ -649,7 +658,7 @@
           this.clearInputTimer(); // Clear timer on success
           this.gameState = 'success';
           this.updateUI();
-          setTimeout(() => this.captchaSuccess(), 200)
+          setTimeout(() => this.captchaSuccess(), 200);
         } else {
           this.updateUI();
           this.startInputTimer(); // Start timer for next key press
@@ -667,6 +676,7 @@
       }
       
       captchaSuccess() {
+        this.clearAllNotes();
         if (window.captchaSuccess) {
           window.captchaSuccess();
         }
@@ -686,13 +696,13 @@
           replayBtn.disabled = true;
           break;
           case 'demo':
-          status.textContent = 'Listen and memorize the pattern...';
+          status.textContent = 'Listen and memorize...';
           progress.textContent = `Pattern Length: ${this.pattern.length} notes`;
           startBtn.disabled = true;
           replayBtn.disabled = true;
           break;
           case 'playing':
-          status.textContent = 'Now repeat the pattern exactly!';
+          status.textContent = 'Repeat what you heard.';
           progress.textContent = `Progress: ${this.userInput.length}/${this.pattern.length}`;
           startBtn.disabled = true;
           replayBtn.disabled = false;
@@ -704,13 +714,13 @@
           replayBtn.disabled = true;
           break;
           case 'failed':
-          status.textContent = '❌ Incorrect pattern. Try again!';
+          status.textContent = '❌ Incorrect pattern, Try again.';
           progress.textContent = 'The CAPTCHA will restart shortly...';
           startBtn.disabled = true;
           replayBtn.disabled = true;
           break;
           case 'timeout':
-          status.textContent = '❌ Time expired. Try again!';
+          status.textContent = '❌ Time expired, Try again.';
           progress.textContent = 'The CAPTCHA will restart shortly...';
           startBtn.disabled = true;
           replayBtn.disabled = true;
