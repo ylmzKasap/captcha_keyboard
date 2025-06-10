@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Joel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
   <style type="text/css">
     html,
     body {
@@ -12,209 +12,234 @@
       padding: 0;
       font-family: sans-serif;
     }
-
+    
     #captcha-container {
       background: white;
     }
-
-     #captcha-container {
+    
+    #captcha-container {
       background: white;
     }
-
+    
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
+    
     body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
-
+    
     .keyboard-container {
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-
+    
     .keyboard-title {
-        text-align: center;
-        color: white;
-        font-size: 2rem;
-        margin-bottom: 30px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        font-weight: 300;
-        letter-spacing: 2px;
+      text-align: center;
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-weight: 300;
+      letter-spacing: 2px;
     }
-
+    
     .game-controls {
-        text-align: center;
-        margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 20px;
     }
-
+    
     .btn {
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
-        font-size: 14px;
-        cursor: pointer;
-        margin: 0 5px;
-        transition: background-color 0.3s ease;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: background-color 0.3s ease;
     }
-
+    
     .btn:hover {
-        background: #0056b3;
+      background: #0056b3;
     }
-
+    
     .btn:disabled {
-        background: #ccc;
-        cursor: not-allowed;
+      background: #ccc;
+      cursor: not-allowed;
     }
-
+    
     .status {
-        text-align: center;
-        color: #333;
-        font-size: 16px;
-        margin-bottom: 15px;
-        min-height: 24px;
+      text-align: center;
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 7px;
+      min-height: 24px;
     }
-
+    
     .progress {
-        text-align: center;
-        color: #666;
-        font-size: 14px;
-        margin-bottom: 15px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 7px;
     }
-
+    
     .keyboard {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
-
+    
     .key {
-        cursor: pointer;
-        user-select: none;
-        transition: all 0.1s ease;
-        border: none;
-        outline: none;
-        position: relative;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 14px;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.1s ease;
+      border: none;
+      outline: none;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
-
+    
     .white-key {
-        width: 50px;
-        height: 200px;
-        background: linear-gradient(to bottom, #ffffff, #f0f0f0);
-        border: 2px solid #ddd;
-        border-radius: 0 0 8px 8px;
-        margin: 0 1px;
-        z-index: 1;
-        color: #333;
-        padding-bottom: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 50px;
+      height: 200px;
+      background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+      border: 2px solid #ddd;
+      border-radius: 0 0 8px 8px;
+      margin: 0 1px;
+      z-index: 1;
+      color: #333;
+      padding-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-
+    
     .black-key {
-        width: 30px;
-        height: 120px;
-        background: linear-gradient(to bottom, #2c2c2c, #000000);
-        border: 2px solid #000;
-        border-radius: 0 0 6px 6px;
-        position: absolute;
-        z-index: 2;
-        color: #fff;
-        padding-bottom: 10px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      width: 30px;
+      height: 120px;
+      background: linear-gradient(to bottom, #2c2c2c, #000000);
+      border: 2px solid #000;
+      border-radius: 0 0 6px 6px;
+      position: absolute;
+      z-index: 2;
+      color: #fff;
+      padding-bottom: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     }
-
+    
     .key:hover {
-        transform: scale(1.01);
+      transform: scale(1.01);
     }
-
+    
     .key:active,
     .key.pressed {
-        transform: scale(0.99);
+      transform: scale(0.99);
     }
-
+    
     .white-key:active,
     .white-key.pressed {
-        background: linear-gradient(to bottom, #e0e0e0, #d0d0d0);
+      background: linear-gradient(to bottom, #e0e0e0, #d0d0d0);
     }
-
+    
     .black-key:active,
     .black-key.pressed {
-        background: linear-gradient(to bottom, #1a1a1a, #333333);
+      background: linear-gradient(to bottom, #1a1a1a, #333333);
     }
-
+    
     .key.demo-highlight {
-        animation: demo-pulse 0.6s ease-in-out;
+      animation: demo-pulse 0.6s ease-in-out;
     }
-
+    
     .white-key.demo-highlight {
-        background: linear-gradient(to bottom, #ffeb3b, #ffc107) !important;
-        box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+      background: linear-gradient(to bottom, #ffeb3b, #ffc107) !important;
+      box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
     }
-
+    
     .black-key.demo-highlight {
-        background: linear-gradient(to bottom, #ff5722, #d32f2f) !important;
-        box-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
+      background: linear-gradient(to bottom, #ff5722, #d32f2f) !important;
+      box-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
     }
-
+    
     @keyframes demo-pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
-
+    
     /* Position black keys */
     .black-key:nth-of-type(8) { left: 37px; } /* C# */
     .black-key:nth-of-type(9) { left: 87px; } /* D# */
     .black-key:nth-of-type(10) { left: 187px; } /* F# */
     .black-key:nth-of-type(11) { left: 237px; } /* G# */
     .black-key:nth-of-type(12) { left: 287px; } /* A# */
-
-    .instructions {
-        text-align: center;
-        color: rgba(255, 255, 255, 0.8);
-        margin-top: 20px;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
+    
     .key-label {
-        font-size: 12px;
-        opacity: 0.7;
-        margin-top: 5px;
+      font-size: 12px;
+      opacity: 0.7;
+      margin-top: 5px;
+    }
+    
+    .timer-container {
+      margin: 20px auto;
+      width: 300px;
+      text-align: center;
+    }
+    
+    .timer-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timer-fill {
+      height: 100%;
+      background: #e03400;
+      border-radius: 4px;
+      transition: width 0.1s linear;
+      width: 100%;
     }
 
+    .progress {
+      margin-top: 7px;
+    }
+    
     @media (max-width: 768px) {        
-        .white-key {
-            width: 40px;
-            height: 160px;
-        }
-        
-        .black-key {
-            width: 25px;
-            height: 100px;
-        }
-        
-        .black-key:nth-of-type(8) { left: 30px; }
-        .black-key:nth-of-type(9) { left: 70px; }
-        .black-key:nth-of-type(10) { left: 150px; }
-        .black-key:nth-of-type(11) { left: 190px; }
-        .black-key:nth-of-type(12) { left: 230px; }
+      .white-key {
+        width: 40px;
+        height: 130px;
+      }
+      
+      .black-key {
+        width: 25px;
+        height: 80px;
+      }
+      
+      .black-key:nth-of-type(8) { left: 30px; }
+      .black-key:nth-of-type(9) { left: 70px; }
+      .black-key:nth-of-type(10) { left: 150px; }
+      .black-key:nth-of-type(11) { left: 190px; }
+      .black-key:nth-of-type(12) { left: 230px; }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      .key-label {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -222,375 +247,510 @@
 <body>
   <div id="captcha-container">
     <div class="keyboard-container">
-          <div class="keyboard-container">
-
+      <div class="keyboard-container">
+        
         
         <div class="game-controls">
-            <button id="startBtn" class="btn">Start Challenge</button>
-            <button id="replayBtn" class="btn" disabled>Replay Pattern</button>
+          <button id="startBtn" class="btn">Start CAPTCHA</button>
+          <button id="replayBtn" class="btn" disabled>Replay Pattern</button>
         </div>
         
-        <div id="status" class="status">Click "Start Challenge" to begin!</div>
-        <div id="progress" class="progress"></div>
+        <div id="status" class="status">Click "Start CAPTCHA" to begin!</div>
         
         <div class="keyboard">
-            <!-- White Keys -->
-            <button class="key white-key" data-note="C4" data-freq="261.63">
-                <div class="key-label">Q</div>
-            </button>
-            <button class="key white-key" data-note="D4" data-freq="293.66">
-                <div class="key-label">W</div>
-            </button>
-            <button class="key white-key" data-note="E4" data-freq="329.63">
-                <div class="key-label">E</div>
-            </button>
-            <button class="key white-key" data-note="F4" data-freq="349.23">
-                <div class="key-label">R</div>
-            </button>
-            <button class="key white-key" data-note="G4" data-freq="392.00">
-                <div class="key-label">T</div>
-            </button>
-            <button class="key white-key" data-note="A4" data-freq="440.00">
-                <div class="key-label">Y</div>
-            </button>
-            <button class="key white-key" data-note="B4" data-freq="493.88">
-                <div class="key-label">U</div>
-            </button>
-
-            <!-- Black Keys -->
-            <button class="key black-key" data-note="C#4" data-freq="277.18">
-                <div class="key-label">2</div>
-            </button>
-            <button class="key black-key" data-note="D#4" data-freq="311.13">
-                <div class="key-label">3</div>
-            </button>
-            <button class="key black-key" data-note="F#4" data-freq="369.99">
-                <div class="key-label">5</div>
-            </button>
-            <button class="key black-key" data-note="G#4" data-freq="415.30">
-                <div class="key-label">6</div>
-            </button>
-            <button class="key black-key" data-note="A#4" data-freq="466.16">
-                <div class="key-label">7</div>
-            </button>
+          <!-- White Keys -->
+          <button class="key white-key" data-note="C4" data-freq="261.63">
+            <div class="key-label">Q</div>
+          </button>
+          <button class="key white-key" data-note="D4" data-freq="293.66">
+            <div class="key-label">W</div>
+          </button>
+          <button class="key white-key" data-note="E4" data-freq="329.63">
+            <div class="key-label">E</div>
+          </button>
+          <button class="key white-key" data-note="F4" data-freq="349.23">
+            <div class="key-label">R</div>
+          </button>
+          <button class="key white-key" data-note="G4" data-freq="392.00">
+            <div class="key-label">T</div>
+          </button>
+          <button class="key white-key" data-note="A4" data-freq="440.00">
+            <div class="key-label">Y</div>
+          </button>
+          <button class="key white-key" data-note="B4" data-freq="493.88">
+            <div class="key-label">U</div>
+          </button>
+          
+          <!-- Black Keys -->
+          <button class="key black-key" data-note="C#4" data-freq="277.18">
+            <div class="key-label">2</div>
+          </button>
+          <button class="key black-key" data-note="D#4" data-freq="311.13">
+            <div class="key-label">3</div>
+          </button>
+          <button class="key black-key" data-note="F#4" data-freq="369.99">
+            <div class="key-label">5</div>
+          </button>
+          <button class="key black-key" data-note="G#4" data-freq="415.30">
+            <div class="key-label">6</div>
+          </button>
+          <button class="key black-key" data-note="A#4" data-freq="466.16">
+            <div class="key-label">7</div>
+          </button>
         </div>
-        
-        <div class="instructions">
-            Click the keys or use your keyboard:<br>
-            <strong>White keys:</strong> Q W E R T Y U<br>
-            <strong>Black keys:</strong> 2 3 5 6 7
+        <div id="progress" class="progress"></div>      
+        <div id="timer-container" class="timer-container" style="display: none;">
+          <div class="timer-bar">
+            <div id="timer-fill" class="timer-fill"></div>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
-
+  
   <script type="text/javascript">
-      class PianoPatternCaptcha {
+    
+    const songs = [
+      [
+        // Never gonna give you up
+        {note: 'C4', duration: 100},
+        {note: 'D4', duration: 100},
+        {note: 'E4', duration: 100},
+        {note: 'F4', duration: 100},
+        {note: 'A4', duration: 250, pauseAfter: 150},
+        {note: 'A4', duration: 250, pauseAfter: 150},
+        {note: 'G4', duration: 500, pauseAfter: 400},
+      ],
+      [
+        // Number one
+        {note: 'D4', duration: 420, pauseAfter: 100},
+        {note: 'A4', duration: 400, pauseAfter: 100},
+        {note: 'G#4', duration: 100},
+        {note: 'A4', duration: 100},
+        {note: 'G#4', duration: 100},
+        {note: 'A4', duration: 100},
+        {note: 'G#4', duration: 200, pauseAfter: 70},
+        {note: 'A4', duration: 200, pauseAfter: 70},
+        {note: 'F4', duration: 450, pauseAfter: 70},
+        {note: 'D4', duration: 500},
+      ],
+      [
+        // All star
+        {note: 'C#4', duration: 420, pauseAfter: 100},
+        {note: 'G#4', duration: 200, pauseAfter: 100},
+        {note: 'F4', duration: 200, pauseAfter: 70},
+        {note: 'F4', duration: 200, pauseAfter: 300},
+        {note: 'D#4', duration: 200, pauseAfter: 70},
+        {note: 'C#4', duration: 200, pauseAfter: 70},
+        {note: 'C#4', duration: 200, pauseAfter: 70},
+        {note: 'F#4', duration: 400, pauseAfter: 70},
+        {note: 'F4', duration: 200, pauseAfter: 70},
+        {note: 'F4', duration: 200, pauseAfter: 70},
+        {note: 'D#4', duration: 200, pauseAfter: 70},
+        {note: 'D#4', duration: 200, pauseAfter: 70},
+        {note: 'C#4', duration: 200, pauseAfter: 70},
+      ]
+    ]
+
+    const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+    class PianoPatternCaptcha {
       constructor() {
-          this.audioContext = null;
-          this.activeOscillators = new Map();
-          this.gameState = 'idle'; // idle, demo, waiting, playing, success, failed
-          this.pattern = [];
-          this.userInput = [];
-          this.currentStep = 0;
-          this.level = 1;
-          
-          this.initAudio();
-          this.setupEventListeners();
-          this.updateUI();
+        this.audioContext = null;
+        this.activeOscillators = new Map();
+        this.gameState = 'idle'; // idle, demo, waiting, playing, success, failed
+        this.pattern = [];
+        this.userInput = [];
+        this.currentStep = 0;
+        this.level = 1;
+        this.inputTimer = null; // Timer for user input
+        this.timerInterval = null; // For visual timer updates
+        this.timerStartTime = null;
+        this.hasStartedInput = false; // Track if user has started inputting
+        this.timeAllowedBetweenKeys = 1500;
+        this.songIndex = Math.floor(Math.random() * songs.length);
+        
+        this.initAudio();
+        this.setupEventListeners();
+        this.updateUI();
       }
-
+      
       async initAudio() {
-          try {
-              this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          } catch (error) {
-              console.error('Web Audio API not supported:', error);
-          }
+        try {
+          this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (error) {
+          console.error('Web Audio API not supported:', error);
+        }
       }
-
+      
       async resumeAudioContext() {
-          if (this.audioContext && this.audioContext.state === 'suspended') {
-              await this.audioContext.resume();
-          }
+        if (this.audioContext && this.audioContext.state === 'suspended') {
+          await this.audioContext.resume();
+        }
       }
-
+      
       setupEventListeners() {
-          const keys = document.querySelectorAll('.key');
+        const keys = document.querySelectorAll('.key');
+        
+        // Mouse events
+        keys.forEach(key => {
+          key.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            this.handleKeyPress(key);
+          });
           
-          // Mouse events
-          keys.forEach(key => {
-              key.addEventListener('mousedown', (e) => {
-                  e.preventDefault();
-                  this.handleKeyPress(key);
-              });
-              
-              key.addEventListener('mouseup', (e) => {
-                  e.preventDefault();
-                  this.stopNote(key);
-              });
-              
-              key.addEventListener('mouseleave', (e) => {
-                  this.stopNote(key);
-              });
+          key.addEventListener('mouseup', (e) => {
+            e.preventDefault();
+            this.stopNote(key);
           });
-
-          // Keyboard events
-          document.addEventListener('keydown', (e) => {
-              if (e.repeat) return;
-              
-              const keyMap = {
-                  'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
-                  't': 'G4', 'y': 'A4', 'u': 'B4',
-                  '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4'
-              };
-              
-              const note = keyMap[e.key.toLowerCase()];
-              if (note) {
-                  const keyElement = document.querySelector(`[data-note="${note}"]`);
-                  if (keyElement && !this.activeOscillators.has(note)) {
-                      this.handleKeyPress(keyElement);
-                  }
-              }
-          });
-
-          document.addEventListener('keyup', (e) => {
-              const keyMap = {
-                  'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
-                  't': 'G4', 'y': 'A4', 'u': 'B4',
-                  '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4'
-              };
-              
-              const note = keyMap[e.key.toLowerCase()];
-              if (note) {
-                  const keyElement = document.querySelector(`[data-note="${note}"]`);
-                  if (keyElement) {
-                      this.stopNote(keyElement);
-                  }
-              }
-          });
-
-          // Game controls
-          document.getElementById('startBtn').addEventListener('click', () => {
-              this.startChallenge();
-          });
-
-          document.getElementById('replayBtn').addEventListener('click', () => {
-              this.replayPattern();
-          });
-
-          // Resume audio context on first user interaction
-          document.addEventListener('click', () => {
-              this.resumeAudioContext();
-          }, { once: true });
-      }
-
-      handleKeyPress(keyElement) {
-          this.playNote(keyElement);
           
-          if (this.gameState === 'playing') {
-              const note = keyElement.dataset.note;
-              this.userInput.push(note);
-              this.checkUserInput();
+          key.addEventListener('mouseleave', (e) => {
+            this.stopNote(key);
+          });
+        });
+        
+        // Keyboard events
+        document.addEventListener('keydown', (e) => {
+          if (e.repeat) return;
+          
+          const keyMap = {
+            'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
+            't': 'G4', 'y': 'A4', 'u': 'B4',
+            '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4'
+          };
+          
+          const note = keyMap[e.key.toLowerCase()];
+          if (note) {
+            const keyElement = document.querySelector(`[data-note="${note}"]`);
+            if (keyElement && !this.activeOscillators.has(note)) {
+              this.handleKeyPress(keyElement);
+            }
           }
+        });
+        
+        document.addEventListener('keyup', (e) => {
+          const keyMap = {
+            'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
+            't': 'G4', 'y': 'A4', 'u': 'B4',
+            '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4'
+          };
+          
+          const note = keyMap[e.key.toLowerCase()];
+          if (note) {
+            const keyElement = document.querySelector(`[data-note="${note}"]`);
+            if (keyElement) {
+              this.stopNote(keyElement);
+            }
+          }
+        });
+        
+        // Game controls
+        document.getElementById('startBtn').addEventListener('click', () => {
+          this.startCaptcha();
+        });
+        
+        document.getElementById('replayBtn').addEventListener('click', () => {
+          this.replayPattern();
+        });
+        
+        // Resume audio context on first user interaction
+        document.addEventListener('click', () => {
+          this.resumeAudioContext();
+        }, { once: true });
+      }
+      
+      handleKeyPress(keyElement) {
+        this.playNote(keyElement);
+        
+        if (this.gameState === 'playing') {
+          const note = keyElement.dataset.note;
+          this.userInput.push(note);
+          
+          // Start timer only after first key press
+          if (!this.hasStartedInput) {
+            this.hasStartedInput = true;
+            this.showTimer();
+          }
+          
+          this.clearInputTimer(); // Clear the timeout when user presses a key
+          this.checkUserInput();
+        }
+      }
+      
+      showTimer() {
+        const timerContainer = document.getElementById('timer-container');
+        timerContainer.style.display = 'block';
+      }
+      
+      hideTimer() {
+        const timerContainer = document.getElementById('timer-container');
+        timerContainer.style.display = 'none';
+      }
+      
+      updateVisualTimer(timeLeft) {
+        const timerFill = document.getElementById('timer-fill');
+        const percentage = (timeLeft / (this.timeAllowedBetweenKeys - 250)) * 100;
+        timerFill.style.width = percentage + '%';
+      }
+      
+      startInputTimer() {
+        this.clearInputTimer(); // Clear any existing timer
+        
+        // Only start timer if user has already started inputting
+        if (!this.hasStartedInput) {
+          return;
+        }
+        
+        this.timerStartTime = Date.now();
+        
+        // Visual timer update
+        this.timerInterval = setInterval(() => {
+          const elapsed = Date.now() - this.timerStartTime;
+          const timeLeft = Math.max(0, this.timeAllowedBetweenKeys - elapsed);
+          this.updateVisualTimer(timeLeft);
+          
+          if (timeLeft <= 0) {
+            clearInterval(this.timerInterval);
+          }
+        }, 50);
+        
+        // Actual timeout
+        this.inputTimer = setTimeout(() => {
+          if (this.gameState === 'playing') {
+            this.gameState = 'timeout';
+            this.updateUI();
+            setTimeout(() => {
+              this.resetGame();
+            }, this.timeAllowedBetweenKeys);
+          }
+        }, this.timeAllowedBetweenKeys); // 1 second timeout
+      }
+      
+      clearInputTimer() {
+        if (this.inputTimer) {
+          clearTimeout(this.inputTimer);
+          this.inputTimer = null;
+        }
+        if (this.timerInterval) {
+          clearInterval(this.timerInterval);
+          this.timerInterval = null;
+        }
+        // Reset visual timer to full
+        this.updateVisualTimer(0);
       }
 
       generatePattern() {
-          const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4'];
-          const patternLength = Math.min(3 + this.level, 7); // Start with 4 notes, max 8
-          this.pattern = [];
-          
-          for (let i = 0; i < patternLength; i++) {
-              this.pattern.push(notes[Math.floor(Math.random() * notes.length)]);
-          }
+        const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4'];
+        this.pattern = songs[this.songIndex];
       }
-
-      async startChallenge() {
-          this.gameState = 'demo';
-          this.generatePattern();
-          this.userInput = [];
-          this.currentStep = 0;
-          this.updateUI();
-          
-          await this.resumeAudioContext();
-          await this.playPattern();
+    
+      async startCaptcha() {
+        this.gameState = 'demo';
+        this.generatePattern();
+        this.userInput = [];
+        this.currentStep = 0;
+        this.hasStartedInput = false; // Reset input tracking
+        this.clearInputTimer(); // Clear any existing timer
+        this.hideTimer(); // Hide timer during demo
+        this.updateUI();
+        
+        await this.resumeAudioContext();
+        await this.playPattern();
       }
-
+      
       async playPattern() {
-          this.gameState = 'demo';
-          this.updateUI();
+        this.gameState = 'demo';
+        this.updateUI();
+        
+        for (let i = 0; i < this.pattern.length; i++) {
+          const { note, duration, pauseAfter } = this.pattern[i];
+          const keyElement = document.querySelector(`[data-note="${note}"]`);
           
-          for (let i = 0; i < this.pattern.length; i++) {
-              await new Promise(resolve => setTimeout(resolve, 200));
-              
-              const note = this.pattern[i];
-              const keyElement = document.querySelector(`[data-note="${note}"]`);
-              
-              if (keyElement) {
-                  this.highlightKey(keyElement);
-                  this.playNote(keyElement);
-                  
-                  await new Promise(resolve => setTimeout(resolve, 600));
-                  this.stopNote(keyElement);
-              }
+          if (keyElement) {
+            this.highlightKey(keyElement, duration);
+            this.playNote(keyElement);
+            
+            await new Promise(resolve => setTimeout(resolve, duration));
+            this.stopNote(keyElement);
+            
+            // Add pause after the note (except for the last note)
+            if (i < this.pattern.length - 1) {
+              await new Promise(resolve => setTimeout(resolve, pauseAfter || 30));
+            }
           }
-          
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          this.gameState = 'playing';
-          this.updateUI();
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        this.gameState = 'playing';
+        this.updateUI();
       }
-
+      
       async replayPattern() {
-          if (this.gameState === 'waiting' || this.gameState === 'playing') {
-              this.userInput = [];
-              this.currentStep = 0;
-              await this.playPattern();
-          }
-      }
-
-      highlightKey(keyElement) {
-          keyElement.classList.add('demo-highlight');
-          setTimeout(() => {
-              keyElement.classList.remove('demo-highlight');
-          }, 600);
-      }
-
-      checkUserInput() {
-          const lastInput = this.userInput[this.userInput.length - 1];
-          const expectedNote = this.pattern[this.userInput.length - 1];
-          
-          if (lastInput !== expectedNote) {
-              this.gameState = 'failed';
-              this.updateUI();
-              setTimeout(() => {
-                  this.resetGame();
-              }, 2000);
-              return;
-          }
-          
-          if (this.userInput.length === this.pattern.length) {
-              this.gameState = 'success';
-              this.updateUI();
-              this.captchaSuccess();
-          } else {
-              this.updateUI();
-          }
-      }
-
-      resetGame() {
-          this.gameState = 'idle';
+        if (this.gameState === 'waiting' || this.gameState === 'playing') {
           this.userInput = [];
           this.currentStep = 0;
+          this.hasStartedInput = false; // Reset input tracking
+          this.clearInputTimer(); // Clear timer during replay
+          this.hideTimer(); // Hide timer during replay
+          await this.playPattern();
+        }
+      }
+      
+      highlightKey(keyElement, duration = 600) {
+        keyElement.classList.add('demo-highlight');
+        setTimeout(() => {
+          keyElement.classList.remove('demo-highlight');
+        }, duration);
+      }
+      
+      checkUserInput() {
+        const lastInput = this.userInput[this.userInput.length - 1];
+        const expectedNote = this.pattern[this.userInput.length - 1].note; // Access note property
+        
+        if (lastInput !== expectedNote) {
+          this.clearInputTimer(); // Clear timer on wrong input
+          this.gameState = 'failed';
           this.updateUI();
+          setTimeout(() => {
+            this.resetGame();
+          }, 2000);
+          return;
+        }
+        
+        if (this.userInput.length === this.pattern.length) {
+          this.clearInputTimer(); // Clear timer on success
+          this.gameState = 'success';
+          this.updateUI();
+          this.captchaSuccess();
+        } else {
+          this.updateUI();
+          this.startInputTimer(); // Start timer for next key press
+        }
       }
-
+            
+      resetGame() {
+        this.clearInputTimer(); // Clear timer when resetting
+        this.hideTimer(); // Hide timer when resetting
+        this.hasStartedInput = false; // Reset input tracking
+        this.gameState = 'idle';
+        this.userInput = [];
+        this.currentStep = 0;
+        this.updateUI();
+      }
+      
+      captchaSuccess() {
+        console.log(window.captchaSuccess)
+        if (window.captchaSuccess) {
+          window.captchaSuccess();
+        }
+      }
+      
       updateUI() {
-          const status = document.getElementById('status');
-          const progress = document.getElementById('progress');
-          const startBtn = document.getElementById('startBtn');
-          const replayBtn = document.getElementById('replayBtn');
-          
-          switch (this.gameState) {
-              case 'idle':
-                  status.textContent = 'Click "Start Challenge" to begin!';
-                  progress.textContent = '';
-                  startBtn.disabled = false;
-                  replayBtn.disabled = true;
-                  break;
-              case 'demo':
-                  status.textContent = 'Watch carefully and memorize the pattern...';
-                  progress.textContent = `Pattern Length: ${this.pattern.length} notes`;
-                  startBtn.disabled = true;
-                  replayBtn.disabled = true;
-                  break;
-              case 'playing':
-                  status.textContent = 'Now repeat the pattern exactly!';
-                  progress.textContent = `Progress: ${this.userInput.length}/${this.pattern.length}`;
-                  startBtn.disabled = true;
-                  replayBtn.disabled = false;
-                  break;
-              case 'success':
-                  status.textContent = '🎉 Perfect! CAPTCHA solved successfully!';
-                  progress.textContent = 'You may now proceed.';
-                  startBtn.disabled = true;
-                  replayBtn.disabled = true;
-                  break;
-              case 'failed':
-                  status.textContent = '❌ Wrong pattern. Try again!';
-                  progress.textContent = 'The challenge will restart shortly...';
-                  startBtn.disabled = true;
-                  replayBtn.disabled = true;
-                  break;
-          }
+        const status = document.getElementById('status');
+        const progress = document.getElementById('progress');
+        const startBtn = document.getElementById('startBtn');
+        const replayBtn = document.getElementById('replayBtn');
+        
+        switch (this.gameState) {
+          case 'idle':
+          status.textContent = 'Click "Start CAPTCHA" to begin!';
+          progress.textContent = '';
+          startBtn.disabled = false;
+          replayBtn.disabled = true;
+          break;
+          case 'demo':
+          status.textContent = 'Listen and memorize the pattern...';
+          progress.textContent = `Pattern Length: ${this.pattern.length} notes`;
+          startBtn.disabled = true;
+          replayBtn.disabled = true;
+          break;
+          case 'playing':
+          status.textContent = 'Now repeat the pattern exactly!';
+          progress.textContent = `Progress: ${this.userInput.length}/${this.pattern.length}`;
+          startBtn.disabled = true;
+          replayBtn.disabled = false;
+          break;
+          case 'success':
+          status.textContent = '🎉 Success!';
+          progress.textContent = '';
+          startBtn.disabled = true;
+          replayBtn.disabled = true;
+          break;
+          case 'failed':
+          status.textContent = '❌ Incorrect pattern. Try again!';
+          progress.textContent = 'The CAPTCHA will restart shortly...';
+          startBtn.disabled = true;
+          replayBtn.disabled = true;
+          break;
+          case 'timeout':
+          status.textContent = '❌ Time expired. Try again!';
+          progress.textContent = 'The CAPTCHA will restart shortly...';
+          startBtn.disabled = true;
+          replayBtn.disabled = true;
+          break;
+        }
       }
-
+      
       async playNote(keyElement) {
-          await this.resumeAudioContext();
-          
-          if (!this.audioContext) return;
-          
-          const note = keyElement.dataset.note;
-          const frequency = parseFloat(keyElement.dataset.freq);
-          
-          this.stopNote(keyElement);
-          
-          const oscillator = this.audioContext.createOscillator();
-          const gainNode = this.audioContext.createGain();
-          
-          oscillator.type = 'triangle';
-          oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
-          
-          const now = this.audioContext.currentTime;
-          gainNode.gain.setValueAtTime(0, now);
-          gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
-          gainNode.gain.exponentialRampToValueAtTime(0.2, now + 0.1);
-          
-          oscillator.connect(gainNode);
-          gainNode.connect(this.audioContext.destination);
-          
-          oscillator.start(now);
-          
-          this.activeOscillators.set(note, { oscillator, gainNode });
-          
-          keyElement.classList.add('pressed');
+        await this.resumeAudioContext();
+        
+        if (!this.audioContext) return;
+        
+        const note = keyElement.dataset.note;
+        const frequency = parseFloat(keyElement.dataset.freq);
+        
+        this.stopNote(keyElement);
+        
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.type = 'triangle';
+        oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+        
+        const now = this.audioContext.currentTime;
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.2, now + 0.1);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.start(now);
+        
+        this.activeOscillators.set(note, { oscillator, gainNode });
+        
+        keyElement.classList.add('pressed');
       }
-
+      
       stopNote(keyElement) {
-          const note = keyElement.dataset.note;
-          const audioNodes = this.activeOscillators.get(note);
+        const note = keyElement.dataset.note;
+        const audioNodes = this.activeOscillators.get(note);
+        
+        if (audioNodes) {
+          const { oscillator, gainNode } = audioNodes;
+          const now = this.audioContext.currentTime;
           
-          if (audioNodes) {
-              const { oscillator, gainNode } = audioNodes;
-              const now = this.audioContext.currentTime;
-              
-              gainNode.gain.cancelScheduledValues(now);
-              gainNode.gain.setValueAtTime(gainNode.gain.value, now);
-              gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-              
-              oscillator.stop(now + 0.3);
-              
-              this.activeOscillators.delete(note);
-          }
+          gainNode.gain.cancelScheduledValues(now);
+          gainNode.gain.setValueAtTime(gainNode.gain.value, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
           
-          keyElement.classList.remove('pressed');
+          oscillator.stop(now + 0.3);
+          
+          this.activeOscillators.delete(note);
+        }
+        
+        keyElement.classList.remove('pressed');
       }
-  }
-
-  // Initialize the piano when the page loads
-  document.addEventListener('DOMContentLoaded', () => {
+    }
+    
+    // Initialize the piano when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
       new PianoPatternCaptcha();
-  });
-
-    (function(window, document){
-      // This is how you tell the parent window that the CAPTCHA was successful.
-      function captchaSuccess() {
+    });
+    
+    function captchaSuccess() {
         window.top.postMessage("success", '*');
       }
-
-      // Your CAPTCHA code goes here, we've added a simple example below:
-      document.getElementById('solve')
-           .addEventListener('click', () => captchaSuccess());
-
-    })(window, document);
   </script>
 </body>
 </html>
