@@ -114,8 +114,8 @@
     }
     
     .white-key {
-      width: 50px;
-      height: 200px;
+      width: 40px;
+      height: 130px;
       background: linear-gradient(to bottom, #ffffff, #f0f0f0);
       border: 2px solid #ddd;
       border-radius: 0 0 8px 8px;
@@ -127,8 +127,8 @@
     }
     
     .black-key {
-      width: 30px;
-      height: 120px;
+      width: 25px;
+      height: 80px;
       background: linear-gradient(to bottom, #2c2c2c, #000000);
       border: 2px solid #000;
       border-radius: 0 0 6px 6px;
@@ -179,11 +179,12 @@
     }
     
     /* Position black keys */
-    .black-key:nth-of-type(8) { left: 37px; } /* C# */
-    .black-key:nth-of-type(9) { left: 87px; } /* D# */
-    .black-key:nth-of-type(10) { left: 187px; } /* F# */
-    .black-key:nth-of-type(11) { left: 237px; } /* G# */
-    .black-key:nth-of-type(12) { left: 287px; } /* A# */
+    .black-key:nth-of-type(10) { left: 28px; } /* C#4 - between C4 and D4 */
+    .black-key:nth-of-type(11) { left: 69px; } /* D#4 - between D4 and E4 */
+    .black-key:nth-of-type(12) { left: 153px; } /* F#4 - between F4 and G4 */
+    .black-key:nth-of-type(13) { left: 194px; } /* G#4 - between G4 and A4 */
+    .black-key:nth-of-type(14) { left: 235px; } /* A#4 - between A4 and B4 */
+    .black-key:nth-of-type(15) { left: 322px; } /* C#5 - between B4 and C5 */
     
     .key-label {
       font-size: 12px;
@@ -216,24 +217,6 @@
 
     .progress {
       margin-top: 7px;
-    }
-    
-    @media (max-width: 768px) {        
-      .white-key {
-        width: 40px;
-        height: 130px;
-      }
-      
-      .black-key {
-        width: 25px;
-        height: 80px;
-      }
-      
-      .black-key:nth-of-type(8) { left: 30px; }
-      .black-key:nth-of-type(9) { left: 70px; }
-      .black-key:nth-of-type(10) { left: 160px; }
-      .black-key:nth-of-type(11) { left: 200px; }
-      .black-key:nth-of-type(12) { left: 240px; }
     }
 
     @media (hover: none) and (pointer: coarse) {
@@ -280,6 +263,13 @@
           <button class="key white-key" data-note="B4" data-freq="493.88">
             <div class="key-label">U</div>
           </button>
+          <button class="key white-key" data-note="C5" data-freq="523.25">
+            <div class="key-label">I</div>
+          </button>
+          <button class="key white-key" data-note="D5" data-freq="587.33">
+            <div class="key-label">O</div>
+          </button>
+
           
           <!-- Black Keys -->
           <button class="key black-key" data-note="C#4" data-freq="277.18">
@@ -297,6 +287,9 @@
           <button class="key black-key" data-note="A#4" data-freq="466.16">
             <div class="key-label">7</div>
           </button>
+          <button class="key black-key" data-note="C#5" data-freq="554.37">
+            <div class="key-label">9</div>
+          </button>
         </div>
         <div id="progress" class="progress"></div>      
         <div id="timer-container" class="timer-container" style="opacity: 0;">
@@ -313,13 +306,20 @@
     const songs = [
       [
         // Never gonna give you up
-        {note: 'C4', duration: 100},
         {note: 'D4', duration: 100},
         {note: 'E4', duration: 100},
         {note: 'F4', duration: 100},
+        {note: 'D4', duration: 100},
         {note: 'A4', duration: 250, pauseAfter: 150},
         {note: 'A4', duration: 250, pauseAfter: 150},
-        {note: 'G4', duration: 500, pauseAfter: 400},
+        {note: 'G4', duration: 500, pauseAfter: 200},
+        {note: 'D4', duration: 100},
+        {note: 'E4', duration: 100},
+        {note: 'F4', duration: 100},
+        {note: 'D4', duration: 100},
+        {note: 'G4', duration: 250, pauseAfter: 150},
+        {note: 'G4', duration: 250, pauseAfter: 150},
+        {note: 'F4', duration: 500, pauseAfter: 400},
       ],
       [
         // Number one
@@ -367,7 +367,7 @@
         this.timerInterval = null; // For visual timer updates
         this.timerStartTime = null;
         this.hasStartedInput = false; // Track if user has started inputting
-        this.timeAllowedBetweenKeys = 1500;
+        this.timeAllowedBetweenKeys = 2000;
         this.songIndex = Math.floor(Math.random() * songs.length);
         
         this.initAudio();
@@ -430,10 +430,10 @@
           
           const keyMap = {
             'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
-            't': 'G4', 'y': 'A4', 'u': 'B4',
-            '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4'
+            't': 'G4', 'y': 'A4', 'u': 'B4', 'i': 'C5', 'o': 'D5',
+            '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4',
+            '9': 'C#5'
           };
-          
           const note = keyMap[e.key.toLowerCase()];
           if (note) {
             const keyElement = document.querySelector(`[data-note="${note}"]`);
@@ -446,8 +446,9 @@
         document.addEventListener('keyup', (e) => {
           const keyMap = {
             'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
-            't': 'G4', 'y': 'A4', 'u': 'B4',
-            '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4'
+            't': 'G4', 'y': 'A4', 'u': 'B4', 'i': 'C5', 'o': 'D5',
+            '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4',
+            '9': 'C#5'
           };
           
           const note = keyMap[e.key.toLowerCase()];
@@ -564,7 +565,7 @@
       }
 
       generatePattern() {
-        const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4'];
+        const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4', 'C#5'];
         this.pattern = songs[this.songIndex];
         /* this.pattern = [
         {note: 'C4', duration: 100},
