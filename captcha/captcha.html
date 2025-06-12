@@ -437,7 +437,7 @@
     {note: 'C#4', duration: 200},
     ],
     [
-    // Sandtorm
+    // Sandstorm
     {note: 'E4', duration: 70, pauseAfter: 30},
     {note: 'E4', duration: 70, pauseAfter: 30},
     {note: 'E4', duration: 70, pauseAfter: 30},
@@ -661,8 +661,8 @@
       
       updateVisualTimer(timeLeft) {
         const timerFill = document.getElementById('timer-fill');
-        const percentage = (timeLeft / (this.timeAllowedBetweenKeys - 250)) * 100;
-        timerFill.style.width = percentage + '%';
+        const percentage = (timeLeft / (this.timeAllowedBetweenKeys - 200)) * 100;
+        timerFill.style.width = (percentage || 100) + '%';
       }
       
       startInputTimer() {
