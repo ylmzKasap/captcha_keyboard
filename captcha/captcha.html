@@ -31,13 +31,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 20px;
+      padding-top: 10px;
     }
     
     .keyboard-container {
       backdrop-filter: blur(10px);
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
     }
     
     .keyboard-title {
@@ -52,7 +55,7 @@
     
     .game-controls {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     
     .btn {
@@ -78,17 +81,21 @@
     
     .status {
       text-align: center;
-      color: #333;
       font-size: 16px;
       margin-bottom: 7px;
       min-height: 24px;
     }
     
-    .progress {
-      text-align: center;
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 7px;
+    /* Piano Frame */
+    .piano-frame {
+      background: linear-gradient(to bottom, #8B4513, #654321);
+      padding: 20px 15px 25px 15px;
+      border-radius: 15px;
+      box-shadow: 
+      0 10px 25px rgba(0, 0, 0, 0.4),
+      inset 0 2px 5px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+      border: 3px solid #2F1B14;
     }
     
     .keyboard {
@@ -96,12 +103,16 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
+      background: linear-gradient(to bottom, #1a1a1a, #000);
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.6);
     }
     
     .key {
       cursor: pointer;
       user-select: none;
-      transition: all 0.1s ease;
+      transition: all 0.15s ease;
       border: none;
       outline: none;
       position: relative;
@@ -109,53 +120,102 @@
       align-items: flex-end;
       justify-content: center;
       font-weight: 600;
-      font-size: 14px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      font-size: 11px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
     
     .white-key {
       width: 40px;
-      height: 130px;
-      background: linear-gradient(to bottom, #ffffff, #f0f0f0);
-      border: 2px solid #ddd;
-      border-radius: 0 0 8px 8px;
-      margin: 0 1px;
+      height: 140px;
+      background: linear-gradient(to bottom, 
+      #ffffff 0%,
+      #f8f8f8 40%,
+      #f0f0f0 70%,
+      #e8e8e8 100%);
+      border: 1px solid #ccc;
+      border-top: 2px solid #ddd;
+      border-radius: 0 0 6px 6px;
+      margin: 0;
       z-index: 1;
-      color: #333;
+      color: #666;
       padding-bottom: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 
+      0 2px 3px rgba(0, 0, 0, 0.1),
+      0 8px 15px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    .white-key::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 20px;
+      background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0));
+      border-radius: 0 0 20px 20px;
     }
     
     .black-key {
-      width: 25px;
-      height: 80px;
-      background: linear-gradient(to bottom, #2c2c2c, #000000);
-      border: 2px solid #000;
-      border-radius: 0 0 6px 6px;
+      width: 24px;
+      height: 85px;
+      background: linear-gradient(to bottom, 
+      #3a3a3a 0%,
+      #1a1a1a 40%,
+      #000000 100%);
+      border: 1px solid #000;
+      border-top: 2px solid #2a2a2a;
+      border-radius: 0 0 4px 4px;
       position: absolute;
       z-index: 2;
-      color: #fff;
-      padding-bottom: 10px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      color: #ccc;
+      padding-bottom: 8px;
+      box-shadow: 
+      0 3px 6px rgba(0, 0, 0, 0.4),
+      0 8px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4);
     }
     
-    .key:hover {
-      transform: scale(1.01);
-    }
-    
-    .key:active,
-    .key.pressed {
-      transform: scale(0.99);
+    .black-key::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 15px;
+      background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0));
+      border-radius: 0 0 10px 10px;
     }
     
     .white-key:active,
     .white-key.pressed {
-      background: linear-gradient(to bottom, #e0e0e0, #d0d0d0);
+      background: linear-gradient(to bottom, 
+      #f0f0f0 0%,
+      #e8e8e8 40%,
+      #e0e0e0 70%,
+      #d8d8d8 100%);
+      box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .black-key:active,
     .black-key.pressed {
-      background: linear-gradient(to bottom, #1a1a1a, #333333);
+      background: linear-gradient(to bottom, 
+      #2a2a2a 0%,
+      #1a1a1a 40%,
+      #000000 100%);
+      box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.5),
+      0 1px 2px rgba(0, 0, 0, 0.3);
     }
     
     .key.demo-highlight {
@@ -164,32 +224,65 @@
     
     .white-key.demo-highlight {
       background: linear-gradient(to bottom, #ffeb3b, #ffc107) !important;
-      box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+      box-shadow: 
+      0 0 20px rgba(255, 235, 59, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
     }
     
     .black-key.demo-highlight {
       background: linear-gradient(to bottom, #ff5722, #d32f2f) !important;
-      box-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
+      box-shadow: 
+      0 0 20px rgba(255, 87, 34, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
     }
     
     @keyframes demo-pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(2px) scale(1.02); }
+      100% { transform: translateY(0px); }
     }
     
-    /* Position black keys */
-    .black-key:nth-of-type(10) { left: 28px; } /* C#4 - between C4 and D4 */
-    .black-key:nth-of-type(11) { left: 69px; } /* D#4 - between D4 and E4 */
-    .black-key:nth-of-type(12) { left: 153px; } /* F#4 - between F4 and G4 */
-    .black-key:nth-of-type(13) { left: 194px; } /* G#4 - between G4 and A4 */
-    .black-key:nth-of-type(14) { left: 235px; } /* A#4 - between A4 and B4 */
-    .black-key:nth-of-type(15) { left: 322px; } /* C#5 - between B4 and C5 */
+    /* Positioning black keys between white keys */
+    .black-key:nth-of-type(10) { left: 32px; } /* C#4 */
+    .black-key:nth-of-type(11) { left: 77px; } /* D#4 */
+    .black-key:nth-of-type(12) { left: 155px; } /* F#4 */
+    .black-key:nth-of-type(13) { left: 197px; } /* G#4 */
+    .black-key:nth-of-type(14) { left: 237px; } /* A#4 */
+    .black-key:nth-of-type(15) { left: 317px; } /* C#5 */
     
     .key-label {
-      font-size: 12px;
-      opacity: 0.7;
-      margin-top: 5px;
+      font-size: 10px;
+      opacity: 0.6;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+    
+    .white-key .key-label {
+      color: #999;
+    }
+    
+    .black-key .key-label {
+      color: #bbb;
+    }
+    
+    .timer-container {
+      margin: 20px auto 0px auto;
+      width: 300px;
+      text-align: center;
+    }
+    
+    /* Add some piano leg styling */
+    .piano-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 15px;
+      background: linear-gradient(to bottom, #654321, #4a2c17);
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
     }
     
     .timer-container {
@@ -214,11 +307,7 @@
       transition: width 0.1s linear;
       width: 100%;
     }
-
-    .progress {
-      margin-top: 7px;
-    }
-
+    
     @media (hover: none) and (pointer: coarse) {
       .key-label {
         display: none;
@@ -233,10 +322,10 @@
       <div class="keyboard-container">
         <div class="game-controls">
           <button id="startBtn" class="btn">Start CAPTCHA</button>
-          <button id="replayBtn" class="btn" disabled>Replay Pattern</button>
+          <button id="replayBtn" class="btn" disabled>Replay</button>
         </div>
         
-        <div id="status" class="status">Click "Start CAPTCHA" to begin</div>
+        <div id="status" class="status">Press "Start CAPTCHA" to begin</div>
         
         <div class="keyboard">
           <!-- White Keys -->
@@ -267,7 +356,7 @@
           <button class="key white-key" data-note="D5" data-freq="587.33">
             <div class="key-label">O</div>
           </button>
-
+          
           
           <!-- Black Keys -->
           <button class="key black-key" data-note="C#4" data-freq="277.18">
@@ -288,8 +377,7 @@
           <button class="key black-key" data-note="C#5" data-freq="554.37">
             <div class="key-label">9</div>
           </button>
-        </div>
-        <div id="progress" class="progress"></div>      
+        </div> 
         <div id="timer-container" class="timer-container" style="opacity: 0;">
           <div class="timer-bar">
             <div id="timer-fill" class="timer-fill"></div>
@@ -302,140 +390,140 @@
   <script type="text/javascript">
     
     const songs = [
-      [
-        // Never gonna give you up
-        {note: 'D4', duration: 100},
-        {note: 'E4', duration: 100},
-        {note: 'F4', duration: 100},
-        {note: 'D4', duration: 100},
-        {note: 'A4', duration: 250, pauseAfter: 150},
-        {note: 'A4', duration: 250, pauseAfter: 150},
-        {note: 'G4', duration: 500, pauseAfter: 200},
-        {note: 'D4', duration: 100},
-        {note: 'E4', duration: 100},
-        {note: 'F4', duration: 100},
-        {note: 'D4', duration: 100},
-        {note: 'G4', duration: 250, pauseAfter: 150},
-        {note: 'G4', duration: 250, pauseAfter: 150},
-        {note: 'F4', duration: 500},
-      ],
-      [
-        // Number one
-        {note: 'D4', duration: 420, pauseAfter: 100},
-        {note: 'A4', duration: 400, pauseAfter: 100},
-        {note: 'G#4', duration: 100},
-        {note: 'A4', duration: 100},
-        {note: 'G#4', duration: 100},
-        {note: 'A4', duration: 100},
-        {note: 'G#4', duration: 200, pauseAfter: 70},
-        {note: 'A4', duration: 200, pauseAfter: 70},
-        {note: 'F4', duration: 450, pauseAfter: 70},
-        {note: 'D4', duration: 500},
-      ],
-      [
-        // All star
-        {note: 'C#4', duration: 420, pauseAfter: 100},
-        {note: 'G#4', duration: 200, pauseAfter: 70},
-        {note: 'F4', duration: 200, pauseAfter: 70},
-        {note: 'F4', duration: 200, pauseAfter: 300},
-        {note: 'D#4', duration: 200, pauseAfter: 70},
-        {note: 'C#4', duration: 200, pauseAfter: 70},
-        {note: 'C#4', duration: 200, pauseAfter: 70},
-        {note: 'F#4', duration: 400, pauseAfter: 70},
-        {note: 'F4', duration: 200, pauseAfter: 70},
-        {note: 'F4', duration: 200, pauseAfter: 70},
-        {note: 'D#4', duration: 200, pauseAfter: 70},
-        {note: 'D#4', duration: 200, pauseAfter: 70},
-        {note: 'C#4', duration: 200},
-      ],
-      [
-        // Sandtorm
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 150, pauseAfter: 100},
-
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 150, pauseAfter: 100},
-
-        {note: 'A4', duration: 70, pauseAfter: 30},
-        {note: 'A4', duration: 70, pauseAfter: 30},
-        {note: 'A4', duration: 70, pauseAfter: 30},
-        {note: 'A4', duration: 70, pauseAfter: 30},
-        {note: 'A4', duration: 70, pauseAfter: 30},
-        {note: 'A4', duration: 70, pauseAfter: 30},
-        {note: 'A4', duration: 150, pauseAfter: 100},
-
-        {note: 'G4', duration: 70, pauseAfter: 30},
-        {note: 'G4', duration: 70, pauseAfter: 30},
-        {note: 'G4', duration: 70, pauseAfter: 30},
-        {note: 'G4', duration: 70, pauseAfter: 30},
-        {note: 'G4', duration: 70, pauseAfter: 30},
-        {note: 'G4', duration: 70, pauseAfter: 30},
-        {note: 'G4', duration: 150, pauseAfter: 100},
-
-        {note: 'D4', duration: 70, pauseAfter: 30},
-        {note: 'D4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 150, pauseAfter: 100},
-
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 70, pauseAfter: 30},
-        {note: 'E4', duration: 150}
-      ],
-      [
-        // Megalovania
-        {note: 'D4', duration: 100, pauseAfter: 50},
-        {note: 'D4', duration: 100, pauseAfter: 50},
-        {note: 'D5', duration: 120, pauseAfter: 150},
-        {note: 'A4', duration: 150, pauseAfter: 300},
-
-        {note: 'G#4', duration: 200, pauseAfter: 100},
-        {note: 'G4', duration: 200, pauseAfter: 100},  
-        {note: 'F4', duration: 200, pauseAfter: 50},
-        {note: 'D4', duration: 100, pauseAfter: 50},
-        {note: 'F4', duration: 100, pauseAfter: 50},
-        {note: 'G4', duration: 100},    
-      ],
-      [
-        // Coffin dance
-        {note: 'D4', duration: 350, pauseAfter: 100},
-        {note: 'D4', duration: 200, pauseAfter: 50},
-        {note: 'A4', duration: 200, pauseAfter: 50},
-        {note: 'G4', duration: 350, pauseAfter: 100},
-        {note: 'F4', duration: 350, pauseAfter: 100},
-
-        {note: 'E4', duration: 350, pauseAfter: 100},
-        {note: 'E4', duration: 200, pauseAfter: 50},
-        {note: 'E4', duration: 200, pauseAfter: 50},
-        {note: 'G4', duration: 350, pauseAfter: 100},
-        {note: 'F4', duration: 200, pauseAfter: 50},
-        {note: 'E4', duration: 200},
-      ]
+    [
+    // Never gonna give you up
+    {note: 'D4', duration: 100},
+    {note: 'E4', duration: 100},
+    {note: 'F4', duration: 100},
+    {note: 'D4', duration: 100},
+    {note: 'A4', duration: 250, pauseAfter: 150},
+    {note: 'A4', duration: 250, pauseAfter: 150},
+    {note: 'G4', duration: 500, pauseAfter: 200},
+    {note: 'D4', duration: 100},
+    {note: 'E4', duration: 100},
+    {note: 'F4', duration: 100},
+    {note: 'D4', duration: 100},
+    {note: 'G4', duration: 250, pauseAfter: 150},
+    {note: 'G4', duration: 250, pauseAfter: 150},
+    {note: 'F4', duration: 500},
+    ],
+    [
+    // Number one
+    {note: 'D4', duration: 420, pauseAfter: 100},
+    {note: 'A4', duration: 400, pauseAfter: 100},
+    {note: 'G#4', duration: 100},
+    {note: 'A4', duration: 100},
+    {note: 'G#4', duration: 100},
+    {note: 'A4', duration: 100},
+    {note: 'G#4', duration: 200, pauseAfter: 70},
+    {note: 'A4', duration: 200, pauseAfter: 70},
+    {note: 'F4', duration: 450, pauseAfter: 70},
+    {note: 'D4', duration: 500},
+    ],
+    [
+    // All star
+    {note: 'C#4', duration: 420, pauseAfter: 100},
+    {note: 'G#4', duration: 200, pauseAfter: 70},
+    {note: 'F4', duration: 200, pauseAfter: 70},
+    {note: 'F4', duration: 200, pauseAfter: 300},
+    {note: 'D#4', duration: 200, pauseAfter: 70},
+    {note: 'C#4', duration: 200, pauseAfter: 70},
+    {note: 'C#4', duration: 200, pauseAfter: 70},
+    {note: 'F#4', duration: 400, pauseAfter: 70},
+    {note: 'F4', duration: 200, pauseAfter: 70},
+    {note: 'F4', duration: 200, pauseAfter: 70},
+    {note: 'D#4', duration: 200, pauseAfter: 70},
+    {note: 'D#4', duration: 200, pauseAfter: 70},
+    {note: 'C#4', duration: 200},
+    ],
+    [
+    // Sandtorm
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 150, pauseAfter: 100},
+    
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 150, pauseAfter: 100},
+    
+    {note: 'A4', duration: 70, pauseAfter: 30},
+    {note: 'A4', duration: 70, pauseAfter: 30},
+    {note: 'A4', duration: 70, pauseAfter: 30},
+    {note: 'A4', duration: 70, pauseAfter: 30},
+    {note: 'A4', duration: 70, pauseAfter: 30},
+    {note: 'A4', duration: 70, pauseAfter: 30},
+    {note: 'A4', duration: 150, pauseAfter: 100},
+    
+    {note: 'G4', duration: 70, pauseAfter: 30},
+    {note: 'G4', duration: 70, pauseAfter: 30},
+    {note: 'G4', duration: 70, pauseAfter: 30},
+    {note: 'G4', duration: 70, pauseAfter: 30},
+    {note: 'G4', duration: 70, pauseAfter: 30},
+    {note: 'G4', duration: 70, pauseAfter: 30},
+    {note: 'G4', duration: 150, pauseAfter: 100},
+    
+    {note: 'D4', duration: 70, pauseAfter: 30},
+    {note: 'D4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 150, pauseAfter: 100},
+    
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 70, pauseAfter: 30},
+    {note: 'E4', duration: 150}
+    ],
+    [
+    // Megalovania
+    {note: 'D4', duration: 100, pauseAfter: 50},
+    {note: 'D4', duration: 100, pauseAfter: 50},
+    {note: 'D5', duration: 120, pauseAfter: 150},
+    {note: 'A4', duration: 150, pauseAfter: 300},
+    
+    {note: 'G#4', duration: 200, pauseAfter: 100},
+    {note: 'G4', duration: 200, pauseAfter: 100},  
+    {note: 'F4', duration: 200, pauseAfter: 50},
+    {note: 'D4', duration: 100, pauseAfter: 50},
+    {note: 'F4', duration: 100, pauseAfter: 50},
+    {note: 'G4', duration: 100},    
+    ],
+    [
+    // Coffin dance
+    {note: 'D4', duration: 350, pauseAfter: 100},
+    {note: 'D4', duration: 200, pauseAfter: 50},
+    {note: 'A4', duration: 200, pauseAfter: 50},
+    {note: 'G4', duration: 350, pauseAfter: 100},
+    {note: 'F4', duration: 350, pauseAfter: 100},
+    
+    {note: 'E4', duration: 350, pauseAfter: 100},
+    {note: 'E4', duration: 200, pauseAfter: 50},
+    {note: 'E4', duration: 200, pauseAfter: 50},
+    {note: 'G4', duration: 350, pauseAfter: 100},
+    {note: 'F4', duration: 200, pauseAfter: 50},
+    {note: 'E4', duration: 200},
     ]
-
+    ]
+    
     const keyMap = {
       'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
       't': 'G4', 'y': 'A4', 'u': 'B4', 'i': 'C5', 'o': 'D5',
       '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4',
       '9': 'C#5'
     };
-
+    
     const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-
+    
     class PianoPatternCaptcha {
       constructor() {
         this.audioContext = null;
@@ -485,12 +573,12 @@
             e.preventDefault();
             this.stopNote(key);
           });
-
+          
           key.addEventListener('mouseleave', (e) => {
             this.stopNote(key);
           });
-
-           key.addEventListener('touchstart', (e) => {
+          
+          key.addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.handleKeyPress(key);
           });
@@ -622,7 +710,7 @@
         // Reset visual timer to full
         this.updateVisualTimer(0);
       }
-
+      
       clearAllNotes() {
         this.activeOscillators.forEach((audioNodes, note) => {
           const keyElement = document.querySelector(`[data-note="${note}"]`);
@@ -631,7 +719,7 @@
           }
         });
       }
-
+      
       generatePattern() {
         const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4', 'C#5'];
         this.pattern = songs[this.songIndex];
@@ -648,9 +736,9 @@
         {note: 'F#4', duration: 100},
         {note: 'G#4', duration: 100},
         {note: 'A#4', duration: 100},
-      ] */
+        ] */
       }
-    
+      
       async startCaptcha() {
         this.gameState = 'demo';
         this.generatePattern();
@@ -715,6 +803,7 @@
         const expectedNote = this.pattern[this.userInput.length - 1].note; // Access note property
         if (lastInput !== expectedNote) {
           this.clearInputTimer(); // Clear timer on wrong input
+          this.hideTimer();
           this.gameState = 'failed';
           this.updateUI();
           setTimeout(() => {
@@ -733,7 +822,7 @@
           this.startInputTimer(); // Start timer for next key press
         }
       }
-            
+      
       resetGame() {
         this.clearInputTimer(); // Clear timer when resetting
         this.hideTimer(); // Hide timer when resetting
@@ -753,44 +842,37 @@
       
       updateUI() {
         const status = document.getElementById('status');
-        const progress = document.getElementById('progress');
         const startBtn = document.getElementById('startBtn');
         const replayBtn = document.getElementById('replayBtn');
         
         switch (this.gameState) {
           case 'idle':
-          status.textContent = 'Click "Start CAPTCHA" to begin';
-          progress.textContent = '';
+          status.textContent = 'Press "Start CAPTCHA" to begin';
           startBtn.disabled = false;
           replayBtn.disabled = true;
           break;
           case 'demo':
           status.textContent = 'Listen and memorize...';
-          progress.textContent = `Pattern Length: ${this.pattern.length} notes`;
           startBtn.disabled = true;
           replayBtn.disabled = true;
           break;
           case 'playing':
           status.textContent = 'Play what you heard.';
-          progress.textContent = `Progress: ${this.userInput.length}/${this.pattern.length}`;
           startBtn.disabled = true;
           replayBtn.disabled = false;
           break;
           case 'success':
-          status.textContent = '🎉 Success!';
-          progress.textContent = '';
+          status.textContent = '🎉 CAPTCHA completed!';
           startBtn.disabled = true;
           replayBtn.disabled = true;
           break;
           case 'failed':
           status.textContent = '❌ Incorrect pattern, Try again.';
-          progress.textContent = 'The CAPTCHA will restart shortly...';
           startBtn.disabled = true;
           replayBtn.disabled = true;
           break;
           case 'timeout':
           status.textContent = '❌ Time expired, Try again.';
-          progress.textContent = 'The CAPTCHA will restart shortly...';
           startBtn.disabled = true;
           replayBtn.disabled = true;
           break;
@@ -815,7 +897,7 @@
         
         const now = this.audioContext.currentTime;
         const sustainTime = isTouchDevice() ? 0.5 : 0.1; // Longer sustain on mobile
-
+        
         gainNode.gain.setValueAtTime(0, now);
         gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
         gainNode.gain.exponentialRampToValueAtTime(0.2, now + sustainTime);
@@ -860,8 +942,8 @@
     });
     
     function captchaSuccess() {
-        window.top.postMessage("success", '*');
-      }
+      window.top.postMessage("success", '*');
+    }
   </script>
 </body>
 </html>
