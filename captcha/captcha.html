@@ -17,10 +17,6 @@
       background: white;
     }
     
-    #captcha-container {
-      background: white;
-    }
-    
     * {
       margin: 0;
       padding: 0;
@@ -86,7 +82,6 @@
       min-height: 24px;
     }
     
-    /* Piano Frame */
     .piano-frame {
       background: linear-gradient(to bottom, #8B4513, #654321);
       padding: 20px 15px 25px 15px;
@@ -271,7 +266,6 @@
       text-align: center;
     }
     
-    /* Add some piano leg styling */
     .piano-frame::after {
       content: '';
       position: absolute;
@@ -536,7 +530,7 @@
         this.inputTimer = null; // Timer for user input
         this.timerInterval = null; // For visual timer updates
         this.timerStartTime = null;
-        this.hasStartedInput = false; // Track if user has started inputting
+        this.hasStartedInput = false;
         this.timeAllowedBetweenKeys = 2000;
         this.songIndex = Math.floor(Math.random() * songs.length);
         
@@ -644,7 +638,7 @@
             this.showTimer();
           }
           
-          this.clearInputTimer(); // Clear the timeout when user presses a key
+          this.clearInputTimer();
           this.checkUserInput();
         }
       }
@@ -666,9 +660,8 @@
       }
       
       startInputTimer() {
-        this.clearInputTimer(); // Clear any existing timer
+        this.clearInputTimer();
         
-        // Only start timer if user has already started inputting
         if (!this.hasStartedInput) {
           return;
         }
@@ -695,7 +688,7 @@
               this.resetGame();
             }, this.timeAllowedBetweenKeys);
           }
-        }, this.timeAllowedBetweenKeys); // 1 second timeout
+        }, this.timeAllowedBetweenKeys);
       }
       
       clearInputTimer() {
@@ -707,7 +700,6 @@
           clearInterval(this.timerInterval);
           this.timerInterval = null;
         }
-        // Reset visual timer to full
         this.updateVisualTimer(0);
       }
       
@@ -723,20 +715,6 @@
       generatePattern() {
         const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4', 'C#5'];
         this.pattern = songs[this.songIndex];
-        /* this.pattern = [
-        {note: 'C4', duration: 100},
-        {note: 'D4', duration: 100},
-        {note: 'E4', duration: 100},
-        {note: 'F4', duration: 100},
-        {note: 'G4', duration: 100},
-        {note: 'A4', duration: 100},
-        {note: 'B4', duration: 100},
-        {note: 'C#4', duration: 100},
-        {note: 'D#4', duration: 100},
-        {note: 'F#4', duration: 100},
-        {note: 'G#4', duration: 100},
-        {note: 'A#4', duration: 100},
-        ] */
       }
       
       async startCaptcha() {
@@ -744,9 +722,9 @@
         this.generatePattern();
         this.userInput = [];
         this.currentStep = 0;
-        this.hasStartedInput = false; // Reset input tracking
-        this.clearInputTimer(); // Clear any existing timer
-        this.hideTimer(); // Hide timer during demo
+        this.hasStartedInput = false;
+        this.clearInputTimer();
+        this.hideTimer();
         this.updateUI();
         
         await this.resumeAudioContext();
@@ -784,9 +762,9 @@
         if (this.gameState === 'waiting' || this.gameState === 'playing') {
           this.userInput = [];
           this.currentStep = 0;
-          this.hasStartedInput = false; // Reset input tracking
-          this.clearInputTimer(); // Clear timer during replay
-          this.hideTimer(); // Hide timer during replay
+          this.hasStartedInput = false;
+          this.clearInputTimer();
+          this.hideTimer();
           await this.playPattern();
         }
       }
@@ -800,9 +778,9 @@
       
       checkUserInput() {
         const lastInput = this.userInput[this.userInput.length - 1];
-        const expectedNote = this.pattern[this.userInput.length - 1].note; // Access note property
+        const expectedNote = this.pattern[this.userInput.length - 1].note;
         if (lastInput !== expectedNote) {
-          this.clearInputTimer(); // Clear timer on wrong input
+          this.clearInputTimer();
           this.hideTimer();
           this.gameState = 'failed';
           this.updateUI();
@@ -813,20 +791,20 @@
         }
         
         if (this.userInput.length === this.pattern.length) {
-          this.clearInputTimer(); // Clear timer on success
+          this.clearInputTimer();
           this.gameState = 'success';
           this.updateUI();
           setTimeout(() => this.captchaSuccess(), 1000);
         } else {
           this.updateUI();
-          this.startInputTimer(); // Start timer for next key press
+          this.startInputTimer();
         }
       }
       
       resetGame() {
-        this.clearInputTimer(); // Clear timer when resetting
-        this.hideTimer(); // Hide timer when resetting
-        this.hasStartedInput = false; // Reset input tracking
+        this.clearInputTimer();
+        this.hideTimer();
+        this.hasStartedInput = false;
         this.gameState = 'idle';
         this.userInput = [];
         this.currentStep = 0;
@@ -936,7 +914,6 @@
       }
     }
     
-    // Initialize the piano when the page loads
     document.addEventListener('DOMContentLoaded', () => {
       new PianoPatternCaptcha();
     });
