@@ -382,545 +382,544 @@
   </div>
   
   <script type="text/javascript">
-    
-    const songs = [
-    [
-    // Never gonna give you up
-    {note: 'D4', duration: 100},
-    {note: 'E4', duration: 100},
-    {note: 'F4', duration: 100},
-    {note: 'D4', duration: 100},
-    {note: 'A4', duration: 250, pauseAfter: 150},
-    {note: 'A4', duration: 250, pauseAfter: 150},
-    {note: 'G4', duration: 500, pauseAfter: 200},
-    {note: 'D4', duration: 100},
-    {note: 'E4', duration: 100},
-    {note: 'F4', duration: 100},
-    {note: 'D4', duration: 100},
-    {note: 'G4', duration: 250, pauseAfter: 150},
-    {note: 'G4', duration: 250, pauseAfter: 150},
-    {note: 'F4', duration: 500},
-    ],
-    [
-    // Number one
-    {note: 'D4', duration: 420, pauseAfter: 100},
-    {note: 'A4', duration: 400, pauseAfter: 100},
-    {note: 'G#4', duration: 100},
-    {note: 'A4', duration: 100},
-    {note: 'G#4', duration: 100},
-    {note: 'A4', duration: 100},
-    {note: 'G#4', duration: 200, pauseAfter: 70},
-    {note: 'A4', duration: 200, pauseAfter: 70},
-    {note: 'F4', duration: 450, pauseAfter: 70},
-    {note: 'D4', duration: 500},
-    ],
-    [
-    // All star
-    {note: 'C#4', duration: 420, pauseAfter: 100},
-    {note: 'G#4', duration: 200, pauseAfter: 70},
-    {note: 'F4', duration: 200, pauseAfter: 70},
-    {note: 'F4', duration: 200, pauseAfter: 300},
-    {note: 'D#4', duration: 200, pauseAfter: 70},
-    {note: 'C#4', duration: 200, pauseAfter: 70},
-    {note: 'C#4', duration: 200, pauseAfter: 70},
-    {note: 'F#4', duration: 400, pauseAfter: 70},
-    {note: 'F4', duration: 200, pauseAfter: 70},
-    {note: 'F4', duration: 200, pauseAfter: 70},
-    {note: 'D#4', duration: 200, pauseAfter: 70},
-    {note: 'D#4', duration: 200, pauseAfter: 70},
-    {note: 'C#4', duration: 200},
-    ],
-    [
-    // Sandstorm
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 150, pauseAfter: 100},
-    
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 150, pauseAfter: 100},
-    
-    {note: 'A4', duration: 70, pauseAfter: 30},
-    {note: 'A4', duration: 70, pauseAfter: 30},
-    {note: 'A4', duration: 70, pauseAfter: 30},
-    {note: 'A4', duration: 70, pauseAfter: 30},
-    {note: 'A4', duration: 70, pauseAfter: 30},
-    {note: 'A4', duration: 70, pauseAfter: 30},
-    {note: 'A4', duration: 150, pauseAfter: 100},
-    
-    {note: 'G4', duration: 70, pauseAfter: 30},
-    {note: 'G4', duration: 70, pauseAfter: 30},
-    {note: 'G4', duration: 70, pauseAfter: 30},
-    {note: 'G4', duration: 70, pauseAfter: 30},
-    {note: 'G4', duration: 70, pauseAfter: 30},
-    {note: 'G4', duration: 70, pauseAfter: 30},
-    {note: 'G4', duration: 150, pauseAfter: 100},
-    
-    {note: 'D4', duration: 70, pauseAfter: 30},
-    {note: 'D4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 150, pauseAfter: 100},
-    
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 70, pauseAfter: 30},
-    {note: 'E4', duration: 150}
-    ],
-    [
-    // Megalovania
-    {note: 'D4', duration: 100, pauseAfter: 50},
-    {note: 'D4', duration: 100, pauseAfter: 50},
-    {note: 'D5', duration: 120, pauseAfter: 150},
-    {note: 'A4', duration: 150, pauseAfter: 300},
-    
-    {note: 'G#4', duration: 200, pauseAfter: 100},
-    {note: 'G4', duration: 200, pauseAfter: 100},  
-    {note: 'F4', duration: 200, pauseAfter: 50},
-    {note: 'D4', duration: 100, pauseAfter: 50},
-    {note: 'F4', duration: 100, pauseAfter: 50},
-    {note: 'G4', duration: 100},    
-    ],
-    [
-    // Coffin dance
-    {note: 'D4', duration: 350, pauseAfter: 100},
-    {note: 'D4', duration: 200, pauseAfter: 50},
-    {note: 'A4', duration: 200, pauseAfter: 50},
-    {note: 'G4', duration: 350, pauseAfter: 100},
-    {note: 'F4', duration: 350, pauseAfter: 100},
-    
-    {note: 'E4', duration: 350, pauseAfter: 100},
-    {note: 'E4', duration: 200, pauseAfter: 50},
-    {note: 'E4', duration: 200, pauseAfter: 50},
-    {note: 'G4', duration: 350, pauseAfter: 100},
-    {note: 'F4', duration: 200, pauseAfter: 50},
-    {note: 'E4', duration: 200},
-    ]
-    ]
-    
-    const keyMap = {
-      'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
-      't': 'G4', 'y': 'A4', 'u': 'B4', 'i': 'C5', 'o': 'D5',
-      '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4',
-      '9': 'C#5'
-    };
-    
-    const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-    
-    class PianoPatternCaptcha {
-      constructor() {
-        this.audioContext = null;
-        this.activeOscillators = new Map();
-        this.gameState = 'idle'; // idle, demo, waiting, playing, success, failed
-        this.pattern = [];
-        this.userInput = [];
-        this.currentStep = 0;
-        this.level = 1;
-        this.inputTimer = null; // Timer for user input
-        this.timerInterval = null; // For visual timer updates
-        this.timerStartTime = null;
-        this.hasStartedInput = false;
-        this.timeAllowedBetweenKeys = 2000;
-        this.songIndex = Math.floor(Math.random() * songs.length);
-        
-        this.initAudio();
-        this.setupEventListeners();
-        this.updateUI();
-      }
+    (function(window, document) {
+      const songs = [
+      [
+      // Never gonna give you up
+      {note: 'D4', duration: 100},
+      {note: 'E4', duration: 100},
+      {note: 'F4', duration: 100},
+      {note: 'D4', duration: 100},
+      {note: 'A4', duration: 250, pauseAfter: 150},
+      {note: 'A4', duration: 250, pauseAfter: 150},
+      {note: 'G4', duration: 500, pauseAfter: 200},
+      {note: 'D4', duration: 100},
+      {note: 'E4', duration: 100},
+      {note: 'F4', duration: 100},
+      {note: 'D4', duration: 100},
+      {note: 'G4', duration: 250, pauseAfter: 150},
+      {note: 'G4', duration: 250, pauseAfter: 150},
+      {note: 'F4', duration: 500},
+      ],
+      [
+      // Number one
+      {note: 'D4', duration: 420, pauseAfter: 100},
+      {note: 'A4', duration: 400, pauseAfter: 100},
+      {note: 'G#4', duration: 100},
+      {note: 'A4', duration: 100},
+      {note: 'G#4', duration: 100},
+      {note: 'A4', duration: 100},
+      {note: 'G#4', duration: 200, pauseAfter: 70},
+      {note: 'A4', duration: 200, pauseAfter: 70},
+      {note: 'F4', duration: 450, pauseAfter: 70},
+      {note: 'D4', duration: 500},
+      ],
+      [
+      // All star
+      {note: 'C#4', duration: 420, pauseAfter: 100},
+      {note: 'G#4', duration: 200, pauseAfter: 70},
+      {note: 'F4', duration: 200, pauseAfter: 70},
+      {note: 'F4', duration: 200, pauseAfter: 300},
+      {note: 'D#4', duration: 200, pauseAfter: 70},
+      {note: 'C#4', duration: 200, pauseAfter: 70},
+      {note: 'C#4', duration: 200, pauseAfter: 70},
+      {note: 'F#4', duration: 400, pauseAfter: 70},
+      {note: 'F4', duration: 200, pauseAfter: 70},
+      {note: 'F4', duration: 200, pauseAfter: 70},
+      {note: 'D#4', duration: 200, pauseAfter: 70},
+      {note: 'D#4', duration: 200, pauseAfter: 70},
+      {note: 'C#4', duration: 200},
+      ],
+      [
+      // Sandstorm
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 150, pauseAfter: 100},
       
-      async initAudio() {
-        try {
-          this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        } catch (error) {
-          console.error('Web Audio API not supported:', error);
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 150, pauseAfter: 100},
+      
+      {note: 'A4', duration: 70, pauseAfter: 30},
+      {note: 'A4', duration: 70, pauseAfter: 30},
+      {note: 'A4', duration: 70, pauseAfter: 30},
+      {note: 'A4', duration: 70, pauseAfter: 30},
+      {note: 'A4', duration: 70, pauseAfter: 30},
+      {note: 'A4', duration: 70, pauseAfter: 30},
+      {note: 'A4', duration: 150, pauseAfter: 100},
+      
+      {note: 'G4', duration: 70, pauseAfter: 30},
+      {note: 'G4', duration: 70, pauseAfter: 30},
+      {note: 'G4', duration: 70, pauseAfter: 30},
+      {note: 'G4', duration: 70, pauseAfter: 30},
+      {note: 'G4', duration: 70, pauseAfter: 30},
+      {note: 'G4', duration: 70, pauseAfter: 30},
+      {note: 'G4', duration: 150, pauseAfter: 100},
+      
+      {note: 'D4', duration: 70, pauseAfter: 30},
+      {note: 'D4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 150, pauseAfter: 100},
+      
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 70, pauseAfter: 30},
+      {note: 'E4', duration: 150}
+      ],
+      [
+      // Megalovania
+      {note: 'D4', duration: 100, pauseAfter: 50},
+      {note: 'D4', duration: 100, pauseAfter: 50},
+      {note: 'D5', duration: 120, pauseAfter: 150},
+      {note: 'A4', duration: 150, pauseAfter: 300},
+      
+      {note: 'G#4', duration: 200, pauseAfter: 100},
+      {note: 'G4', duration: 200, pauseAfter: 100},  
+      {note: 'F4', duration: 200, pauseAfter: 50},
+      {note: 'D4', duration: 100, pauseAfter: 50},
+      {note: 'F4', duration: 100, pauseAfter: 50},
+      {note: 'G4', duration: 100},    
+      ],
+      [
+      // Coffin dance
+      {note: 'D4', duration: 350, pauseAfter: 100},
+      {note: 'D4', duration: 200, pauseAfter: 50},
+      {note: 'A4', duration: 200, pauseAfter: 50},
+      {note: 'G4', duration: 350, pauseAfter: 100},
+      {note: 'F4', duration: 350, pauseAfter: 100},
+      
+      {note: 'E4', duration: 350, pauseAfter: 100},
+      {note: 'E4', duration: 200, pauseAfter: 50},
+      {note: 'E4', duration: 200, pauseAfter: 50},
+      {note: 'G4', duration: 350, pauseAfter: 100},
+      {note: 'F4', duration: 200, pauseAfter: 50},
+      {note: 'E4', duration: 200},
+      ]
+      ]
+      
+      const keyMap = {
+        'q': 'C4', 'w': 'D4', 'e': 'E4', 'r': 'F4',
+        't': 'G4', 'y': 'A4', 'u': 'B4', 'i': 'C5', 'o': 'D5',
+        '2': 'C#4', '3': 'D#4', '5': 'F#4', '6': 'G#4', '7': 'A#4',
+        '9': 'C#5'
+      };
+      
+      const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+      
+      class PianoPatternCaptcha {
+        constructor() {
+          this.audioContext = null;
+          this.activeOscillators = new Map();
+          this.gameState = 'idle'; // idle, demo, waiting, playing, success, failed
+          this.pattern = [];
+          this.userInput = [];
+          this.currentStep = 0;
+          this.level = 1;
+          this.inputTimer = null; // Timer for user input
+          this.timerInterval = null; // For visual timer updates
+          this.timerStartTime = null;
+          this.hasStartedInput = false;
+          this.timeAllowedBetweenKeys = 2000;
+          this.songIndex = Math.floor(Math.random() * songs.length);
+          
+          this.initAudio();
+          this.setupEventListeners();
+          this.updateUI();
         }
-      }
-      
-      async resumeAudioContext() {
-        if (this.audioContext && this.audioContext.state === 'suspended') {
-          await this.audioContext.resume();
-        }
-      }
-      
-      setupEventListeners() {
-        const keys = document.querySelectorAll('.key');
         
-        // Mouse events
-        keys.forEach(key => {
-          key.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-            this.handleKeyPress(key);
-          });
-          
-          key.addEventListener('mouseup', (e) => {
-            e.preventDefault();
-            this.stopNote(key);
-          });
-          
-          key.addEventListener('mouseleave', (e) => {
-            this.stopNote(key);
-          });
-          
-          key.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            this.handleKeyPress(key);
-          });
-          
-          key.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            this.stopNote(key);
-          });
-          
-          key.addEventListener('touchcancel', (e) => {
-            e.preventDefault();
-            this.stopNote(key);
-          });
-        });
-        
-        // Keyboard events
-        document.addEventListener('keydown', (e) => {
-          if (e.repeat) return;
-          const note = keyMap[e.key.toLowerCase()];
-          if (note) {
-            const keyElement = document.querySelector(`[data-note="${note}"]`);
-            if (keyElement && !this.activeOscillators.has(note)) {
-              this.handleKeyPress(keyElement);
-            }
+        async initAudio() {
+          try {
+            this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          } catch (error) {
+            console.error('Web Audio API not supported:', error);
           }
-        });
+        }
         
-        document.addEventListener('keyup', (e) => {
-          const note = keyMap[e.key.toLowerCase()];
-          if (note) {
+        async resumeAudioContext() {
+          if (this.audioContext && this.audioContext.state === 'suspended') {
+            await this.audioContext.resume();
+          }
+        }
+        
+        setupEventListeners() {
+          const keys = document.querySelectorAll('.key');
+          
+          // Mouse events
+          keys.forEach(key => {
+            key.addEventListener('mousedown', (e) => {
+              e.preventDefault();
+              this.handleKeyPress(key);
+            });
+            
+            key.addEventListener('mouseup', (e) => {
+              e.preventDefault();
+              this.stopNote(key);
+            });
+            
+            key.addEventListener('mouseleave', (e) => {
+              this.stopNote(key);
+            });
+            
+            key.addEventListener('touchstart', (e) => {
+              e.preventDefault();
+              this.handleKeyPress(key);
+            });
+            
+            key.addEventListener('touchend', (e) => {
+              e.preventDefault();
+              this.stopNote(key);
+            });
+            
+            key.addEventListener('touchcancel', (e) => {
+              e.preventDefault();
+              this.stopNote(key);
+            });
+          });
+          
+          // Keyboard events
+          document.addEventListener('keydown', (e) => {
+            if (e.repeat) return;
+            const note = keyMap[e.key.toLowerCase()];
+            if (note) {
+              const keyElement = document.querySelector(`[data-note="${note}"]`);
+              if (keyElement && !this.activeOscillators.has(note)) {
+                this.handleKeyPress(keyElement);
+              }
+            }
+          });
+          
+          document.addEventListener('keyup', (e) => {
+            const note = keyMap[e.key.toLowerCase()];
+            if (note) {
+              const keyElement = document.querySelector(`[data-note="${note}"]`);
+              if (keyElement) {
+                this.stopNote(keyElement);
+              }
+            }
+          });
+          
+          // Game controls
+          document.getElementById('startBtn').addEventListener('click', () => {
+            this.startCaptcha();
+          });
+          
+          document.getElementById('replayBtn').addEventListener('click', () => {
+            this.replayPattern();
+          });
+          
+          // Resume audio context on first user interaction
+          document.addEventListener('click', () => {
+            this.resumeAudioContext();
+          }, { once: true });
+        }
+        
+        handleKeyPress(keyElement) {
+          this.playNote(keyElement);
+          
+          if (this.gameState === 'playing') {
+            const note = keyElement.dataset.note;
+            this.userInput.push(note);
+            
+            // Start timer only after first key press
+            if (!this.hasStartedInput) {
+              this.hasStartedInput = true;
+              this.showTimer();
+            }
+            
+            this.clearInputTimer();
+            this.checkUserInput();
+          }
+        }
+        
+        showTimer() {
+          const timerContainer = document.getElementById('timer-container');
+          timerContainer.style.opacity = 100;
+        }
+        
+        hideTimer() {
+          const timerContainer = document.getElementById('timer-container');
+          timerContainer.style.opacity = 0;
+        }
+        
+        updateVisualTimer(timeLeft) {
+          const timerFill = document.getElementById('timer-fill');
+          const percentage = (timeLeft / (this.timeAllowedBetweenKeys - 200)) * 100;
+          timerFill.style.width = (percentage || 100) + '%';
+        }
+        
+        startInputTimer() {
+          this.clearInputTimer();
+          
+          if (!this.hasStartedInput) {
+            return;
+          }
+          
+          this.timerStartTime = Date.now();
+          
+          // Visual timer update
+          this.timerInterval = setInterval(() => {
+            const elapsed = Date.now() - this.timerStartTime;
+            const timeLeft = Math.max(0, this.timeAllowedBetweenKeys - elapsed);
+            this.updateVisualTimer(timeLeft);
+            
+            if (timeLeft <= 0) {
+              clearInterval(this.timerInterval);
+            }
+          }, 50);
+          
+          // Actual timeout
+          this.inputTimer = setTimeout(() => {
+            if (this.gameState === 'playing') {
+              this.gameState = 'timeout';
+              this.updateUI();
+              setTimeout(() => {
+                this.resetGame();
+              }, this.timeAllowedBetweenKeys);
+            }
+          }, this.timeAllowedBetweenKeys);
+        }
+        
+        clearInputTimer() {
+          if (this.inputTimer) {
+            clearTimeout(this.inputTimer);
+            this.inputTimer = null;
+          }
+          if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+          }
+          this.updateVisualTimer(0);
+        }
+        
+        clearAllNotes() {
+          this.activeOscillators.forEach((audioNodes, note) => {
             const keyElement = document.querySelector(`[data-note="${note}"]`);
             if (keyElement) {
               this.stopNote(keyElement);
             }
-          }
-        });
-        
-        // Game controls
-        document.getElementById('startBtn').addEventListener('click', () => {
-          this.startCaptcha();
-        });
-        
-        document.getElementById('replayBtn').addEventListener('click', () => {
-          this.replayPattern();
-        });
-        
-        // Resume audio context on first user interaction
-        document.addEventListener('click', () => {
-          this.resumeAudioContext();
-        }, { once: true });
-      }
-      
-      handleKeyPress(keyElement) {
-        this.playNote(keyElement);
-        
-        if (this.gameState === 'playing') {
-          const note = keyElement.dataset.note;
-          this.userInput.push(note);
-          
-          // Start timer only after first key press
-          if (!this.hasStartedInput) {
-            this.hasStartedInput = true;
-            this.showTimer();
-          }
-          
-          this.clearInputTimer();
-          this.checkUserInput();
-        }
-      }
-      
-      showTimer() {
-        const timerContainer = document.getElementById('timer-container');
-        timerContainer.style.opacity = 100;
-      }
-      
-      hideTimer() {
-        const timerContainer = document.getElementById('timer-container');
-        timerContainer.style.opacity = 0;
-      }
-      
-      updateVisualTimer(timeLeft) {
-        const timerFill = document.getElementById('timer-fill');
-        const percentage = (timeLeft / (this.timeAllowedBetweenKeys - 200)) * 100;
-        timerFill.style.width = (percentage || 100) + '%';
-      }
-      
-      startInputTimer() {
-        this.clearInputTimer();
-        
-        if (!this.hasStartedInput) {
-          return;
+          });
         }
         
-        this.timerStartTime = Date.now();
-        
-        // Visual timer update
-        this.timerInterval = setInterval(() => {
-          const elapsed = Date.now() - this.timerStartTime;
-          const timeLeft = Math.max(0, this.timeAllowedBetweenKeys - elapsed);
-          this.updateVisualTimer(timeLeft);
-          
-          if (timeLeft <= 0) {
-            clearInterval(this.timerInterval);
-          }
-        }, 50);
-        
-        // Actual timeout
-        this.inputTimer = setTimeout(() => {
-          if (this.gameState === 'playing') {
-            this.gameState = 'timeout';
-            this.updateUI();
-            setTimeout(() => {
-              this.resetGame();
-            }, this.timeAllowedBetweenKeys);
-          }
-        }, this.timeAllowedBetweenKeys);
-      }
-      
-      clearInputTimer() {
-        if (this.inputTimer) {
-          clearTimeout(this.inputTimer);
-          this.inputTimer = null;
-        }
-        if (this.timerInterval) {
-          clearInterval(this.timerInterval);
-          this.timerInterval = null;
-        }
-        this.updateVisualTimer(0);
-      }
-      
-      clearAllNotes() {
-        this.activeOscillators.forEach((audioNodes, note) => {
-          const keyElement = document.querySelector(`[data-note="${note}"]`);
-          if (keyElement) {
-            this.stopNote(keyElement);
-          }
-        });
-      }
-      
-      generatePattern() {
-        const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4', 'C#5'];
-        this.pattern = songs[this.songIndex];
-      }
-      
-      async startCaptcha() {
-        this.gameState = 'demo';
-        this.generatePattern();
-        this.userInput = [];
-        this.currentStep = 0;
-        this.hasStartedInput = false;
-        this.clearInputTimer();
-        this.hideTimer();
-        this.updateUI();
-        
-        await this.resumeAudioContext();
-        await this.playPattern();
-      }
-      
-      async playPattern() {
-        this.gameState = 'demo';
-        this.updateUI();
-        
-        for (let i = 0; i < this.pattern.length; i++) {
-          const { note, duration, pauseAfter } = this.pattern[i];
-          const keyElement = document.querySelector(`[data-note="${note}"]`);
-          
-          if (keyElement) {
-            this.highlightKey(keyElement, duration);
-            this.playNote(keyElement);
-            
-            await new Promise(resolve => setTimeout(resolve, duration));
-            this.stopNote(keyElement);
-            
-            // Add pause after the note (except for the last note)
-            if (i < this.pattern.length - 1) {
-              await new Promise(resolve => setTimeout(resolve, pauseAfter || 30));
-            }
-          }
+        generatePattern() {
+          const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4', 'C#5'];
+          this.pattern = songs[this.songIndex];
         }
         
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        this.gameState = 'playing';
-        this.updateUI();
-      }
-      
-      async replayPattern() {
-        if (this.gameState === 'waiting' || this.gameState === 'playing') {
+        async startCaptcha() {
+          this.gameState = 'demo';
+          this.generatePattern();
           this.userInput = [];
           this.currentStep = 0;
           this.hasStartedInput = false;
           this.clearInputTimer();
           this.hideTimer();
+          this.updateUI();
+          
+          await this.resumeAudioContext();
           await this.playPattern();
         }
-      }
-      
-      highlightKey(keyElement, duration = 600) {
-        keyElement.classList.add('demo-highlight');
-        setTimeout(() => {
-          keyElement.classList.remove('demo-highlight');
-        }, duration);
-      }
-      
-      checkUserInput() {
-        const lastInput = this.userInput[this.userInput.length - 1];
-        const expectedNote = this.pattern[this.userInput.length - 1].note;
-        if (lastInput !== expectedNote) {
+        
+        async playPattern() {
+          this.gameState = 'demo';
+          this.updateUI();
+          
+          for (let i = 0; i < this.pattern.length; i++) {
+            const { note, duration, pauseAfter } = this.pattern[i];
+            const keyElement = document.querySelector(`[data-note="${note}"]`);
+            
+            if (keyElement) {
+              this.highlightKey(keyElement, duration);
+              this.playNote(keyElement);
+              
+              await new Promise(resolve => setTimeout(resolve, duration));
+              this.stopNote(keyElement);
+              
+              // Add pause after the note (except for the last note)
+              if (i < this.pattern.length - 1) {
+                await new Promise(resolve => setTimeout(resolve, pauseAfter || 30));
+              }
+            }
+          }
+          
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          this.gameState = 'playing';
+          this.updateUI();
+        }
+        
+        async replayPattern() {
+          if (this.gameState === 'waiting' || this.gameState === 'playing') {
+            this.userInput = [];
+            this.currentStep = 0;
+            this.hasStartedInput = false;
+            this.clearInputTimer();
+            this.hideTimer();
+            await this.playPattern();
+          }
+        }
+        
+        highlightKey(keyElement, duration = 600) {
+          keyElement.classList.add('demo-highlight');
+          setTimeout(() => {
+            keyElement.classList.remove('demo-highlight');
+          }, duration);
+        }
+        
+        checkUserInput() {
+          const lastInput = this.userInput[this.userInput.length - 1];
+          const expectedNote = this.pattern[this.userInput.length - 1].note;
+          if (lastInput !== expectedNote) {
+            this.clearInputTimer();
+            this.hideTimer();
+            this.gameState = 'failed';
+            this.updateUI();
+            setTimeout(() => {
+              this.resetGame();
+            }, 2000);
+            return;
+          }
+          
+          if (this.userInput.length === this.pattern.length) {
+            this.clearInputTimer();
+            this.gameState = 'success';
+            this.updateUI();
+            setTimeout(() => this.captchaCompleted(), 1000);
+          } else {
+            this.updateUI();
+            this.startInputTimer();
+          }
+        }
+        
+        resetGame() {
           this.clearInputTimer();
           this.hideTimer();
-          this.gameState = 'failed';
+          this.hasStartedInput = false;
+          this.gameState = 'idle';
+          this.userInput = [];
+          this.currentStep = 0;
           this.updateUI();
-          setTimeout(() => {
-            this.resetGame();
-          }, 2000);
-          return;
         }
         
-        if (this.userInput.length === this.pattern.length) {
-          this.clearInputTimer();
-          this.gameState = 'success';
-          this.updateUI();
-          setTimeout(() => this.captchaSuccess(), 1000);
-        } else {
-          this.updateUI();
-          this.startInputTimer();
+        captchaCompleted() {
+          this.clearAllNotes();
+          captchaSuccess();
         }
-      }
-      
-      resetGame() {
-        this.clearInputTimer();
-        this.hideTimer();
-        this.hasStartedInput = false;
-        this.gameState = 'idle';
-        this.userInput = [];
-        this.currentStep = 0;
-        this.updateUI();
-      }
-      
-      captchaSuccess() {
-        this.clearAllNotes();
-        if (window.captchaSuccess) {
-          window.captchaSuccess();
+        
+        updateUI() {
+          const status = document.getElementById('status');
+          const startBtn = document.getElementById('startBtn');
+          const replayBtn = document.getElementById('replayBtn');
+          
+          switch (this.gameState) {
+            case 'idle':
+            status.textContent = 'Press "Start CAPTCHA" to begin';
+            startBtn.disabled = false;
+            replayBtn.disabled = true;
+            break;
+            case 'demo':
+            status.textContent = 'Listen and memorize...';
+            startBtn.disabled = true;
+            replayBtn.disabled = true;
+            break;
+            case 'playing':
+            status.textContent = 'Play what you heard.';
+            startBtn.disabled = true;
+            replayBtn.disabled = false;
+            break;
+            case 'success':
+            status.textContent = '🎉 CAPTCHA completed!';
+            startBtn.disabled = true;
+            replayBtn.disabled = true;
+            break;
+            case 'failed':
+            status.textContent = '❌ Incorrect pattern, Try again.';
+            startBtn.disabled = true;
+            replayBtn.disabled = true;
+            break;
+            case 'timeout':
+            status.textContent = '❌ Time expired, Try again.';
+            startBtn.disabled = true;
+            replayBtn.disabled = true;
+            break;
+          }
         }
-      }
-      
-      updateUI() {
-        const status = document.getElementById('status');
-        const startBtn = document.getElementById('startBtn');
-        const replayBtn = document.getElementById('replayBtn');
         
-        switch (this.gameState) {
-          case 'idle':
-          status.textContent = 'Press "Start CAPTCHA" to begin';
-          startBtn.disabled = false;
-          replayBtn.disabled = true;
-          break;
-          case 'demo':
-          status.textContent = 'Listen and memorize...';
-          startBtn.disabled = true;
-          replayBtn.disabled = true;
-          break;
-          case 'playing':
-          status.textContent = 'Play what you heard.';
-          startBtn.disabled = true;
-          replayBtn.disabled = false;
-          break;
-          case 'success':
-          status.textContent = '🎉 CAPTCHA completed!';
-          startBtn.disabled = true;
-          replayBtn.disabled = true;
-          break;
-          case 'failed':
-          status.textContent = '❌ Incorrect pattern, Try again.';
-          startBtn.disabled = true;
-          replayBtn.disabled = true;
-          break;
-          case 'timeout':
-          status.textContent = '❌ Time expired, Try again.';
-          startBtn.disabled = true;
-          replayBtn.disabled = true;
-          break;
-        }
-      }
-      
-      async playNote(keyElement) {
-        await this.resumeAudioContext();
-        
-        if (!this.audioContext) return;
-        
-        const note = keyElement.dataset.note;
-        const frequency = parseFloat(keyElement.dataset.freq);
-        
-        this.stopNote(keyElement);
-        
-        const oscillator = this.audioContext.createOscillator();
-        const gainNode = this.audioContext.createGain();
-        
-        oscillator.type = 'triangle';
-        oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
-        
-        const now = this.audioContext.currentTime;
-        const sustainTime = isTouchDevice() ? 0.5 : 0.1; // Longer sustain on mobile
-        
-        gainNode.gain.setValueAtTime(0, now);
-        gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
-        gainNode.gain.exponentialRampToValueAtTime(0.2, now + sustainTime);
-        gainNode.gain.setValueAtTime(0, now);
-        gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
-        gainNode.gain.exponentialRampToValueAtTime(0.2, now + 0.1);
-        
-        oscillator.connect(gainNode);
-        gainNode.connect(this.audioContext.destination);
-        
-        oscillator.start(now);
-        
-        this.activeOscillators.set(note, { oscillator, gainNode });
-        
-        keyElement.classList.add('pressed');
-      }
-      
-      stopNote(keyElement) {
-        const note = keyElement.dataset.note;
-        const audioNodes = this.activeOscillators.get(note);
-        
-        if (audioNodes) {
-          const { oscillator, gainNode } = audioNodes;
+        async playNote(keyElement) {
+          await this.resumeAudioContext();
+          
+          if (!this.audioContext) return;
+          
+          const note = keyElement.dataset.note;
+          const frequency = parseFloat(keyElement.dataset.freq);
+          
+          this.stopNote(keyElement);
+          
+          const oscillator = this.audioContext.createOscillator();
+          const gainNode = this.audioContext.createGain();
+          
+          oscillator.type = 'triangle';
+          oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+          
           const now = this.audioContext.currentTime;
+          const sustainTime = isTouchDevice() ? 0.5 : 0.1; // Longer sustain on mobile
           
-          gainNode.gain.cancelScheduledValues(now);
-          gainNode.gain.setValueAtTime(gainNode.gain.value, now);
-          gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          gainNode.gain.setValueAtTime(0, now);
+          gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
+          gainNode.gain.exponentialRampToValueAtTime(0.2, now + sustainTime);
+          gainNode.gain.setValueAtTime(0, now);
+          gainNode.gain.linearRampToValueAtTime(0.3, now + 0.01);
+          gainNode.gain.exponentialRampToValueAtTime(0.2, now + 0.1);
           
-          oscillator.stop(now + 0.3);
+          oscillator.connect(gainNode);
+          gainNode.connect(this.audioContext.destination);
           
-          this.activeOscillators.delete(note);
+          oscillator.start(now);
+          
+          this.activeOscillators.set(note, { oscillator, gainNode });
+          
+          keyElement.classList.add('pressed');
         }
         
-        keyElement.classList.remove('pressed');
+        stopNote(keyElement) {
+          const note = keyElement.dataset.note;
+          const audioNodes = this.activeOscillators.get(note);
+          
+          if (audioNodes) {
+            const { oscillator, gainNode } = audioNodes;
+            const now = this.audioContext.currentTime;
+            
+            gainNode.gain.cancelScheduledValues(now);
+            gainNode.gain.setValueAtTime(gainNode.gain.value, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            
+            oscillator.stop(now + 0.3);
+            
+            this.activeOscillators.delete(note);
+          }
+          
+          keyElement.classList.remove('pressed');
+        }
       }
-    }
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      new PianoPatternCaptcha();
-    });
-    
-    function captchaSuccess() {
-      window.top.postMessage("success", '*');
-    }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        new PianoPatternCaptcha();
+      });
+      
+      function captchaSuccess() {
+        window.top.postMessage("success", '*');
+      }
+    })(window, document);
   </script>
 </body>
 </html>
