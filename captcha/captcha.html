@@ -535,6 +535,7 @@
           this.hasStartedInput = false;
           this.timeAllowedBetweenKeys = 2000;
           this.songIndex = Math.floor(Math.random() * songs.length);
+          this.attempts = 0;
           
           this.initAudio();
           this.setupEventListeners();
@@ -654,6 +655,31 @@
           const timerContainer = document.getElementById('timer-container');
           timerContainer.style.opacity = 0;
         }
+
+        getRandomSpeedModifier(value) {
+          const options = [0.25, 0.5, 0.75];
+          const index = value % options.length;
+          return options[index];
+        }
+
+        speedUpNote(noteIndex) {
+          // Speed up audio replay every round and make it random after 4 rounds.
+          let speedMultiplier = 1;
+          
+          if (this.attempts < 4) {
+            speedMultiplier = 1 - (this.attempts * .25);
+          } else {
+            speedMultiplier = 1 - this.getRandomSpeedModifier(this.attempts);
+          }
+          const currentNote = songs[this.songIndex][noteIndex];
+          return {
+            ...currentNote,
+            duration: Math.round(currentNote.duration * speedMultiplier),
+            pauseAfter: currentNote.pauseAfter !== undefined
+              ? Math.round(currentNote.pauseAfter * speedMultiplier)
+              : 30,
+          }
+        }
         
         updateVisualTimer(timeLeft) {
           const timerFill = document.getElementById('timer-fill');
@@ -740,17 +766,18 @@
           for (let i = 0; i < this.pattern.length; i++) {
             const { note, duration, pauseAfter } = this.pattern[i];
             const keyElement = document.querySelector(`[data-note="${note}"]`);
+            const speededUpNote = this.speedUpNote(i);
             
             if (keyElement) {
-              this.highlightKey(keyElement, duration);
+              this.highlightKey(keyElement, speededUpNote.duration);
               this.playNote(keyElement);
               
-              await new Promise(resolve => setTimeout(resolve, duration));
+              await new Promise(resolve => setTimeout(resolve, speededUpNote.duration));
               this.stopNote(keyElement);
               
               // Add pause after the note (except for the last note)
               if (i < this.pattern.length - 1) {
-                await new Promise(resolve => setTimeout(resolve, pauseAfter || 30));
+                await new Promise(resolve => setTimeout(resolve, speededUpNote.pauseAfter));
               }
             }
           }
@@ -811,6 +838,7 @@
           this.userInput = [];
           this.currentStep = 0;
           this.updateUI();
+          this.attempts = this.attempts + 1;
         }
         
         captchaCompleted() {
