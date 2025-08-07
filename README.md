@@ -1,5 +1,8 @@
 # CAPTCHA Keyboard
-This repository is created for Kitboga Code Jam 2025.
+This repository is created for Kitboga Code Jam 2025.  
+  
+Try here: https://ylmzkasap.github.io/captcha_keyboard/  
+Watch Kitboga playing it: https://www.youtube.com/watch?v=V1pbvUgbpi4
 
 # Content
 
